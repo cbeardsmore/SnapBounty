@@ -16,7 +16,6 @@ class MainApp extends StatelessWidget {
         cardColor: Colors.grey[300],
         iconTheme: new IconThemeData(color: Colors.black),
         dividerColor: Colors.black,
-        fontFamily: 'Poppins'
       ),
       home: new AuthPage(),
       routes: {
