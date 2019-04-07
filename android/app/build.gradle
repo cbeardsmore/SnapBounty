@@ -38,6 +38,7 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -52,10 +53,11 @@ flutter {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-core:16.0.8'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha03'
-    implementation 'com.google.firebase:firebase-core:16.0.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

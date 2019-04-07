@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/gradient_app_bar.dart';
+import 'package:snap_hero/widgets/gradient_app_bar.dart';
+import 'package:snap_hero/widgets/challenge_list.dart';
 
 class PrimaryPage extends StatelessWidget {
   @override
@@ -8,6 +9,7 @@ class PrimaryPage extends StatelessWidget {
       appBar: AppBar(
         flexibleSpace: GradientAppBar('Challenges'),
       ),
+      body: ChallengeList()
     );
   }
 }

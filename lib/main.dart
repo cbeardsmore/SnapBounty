@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/auth_page.dart';
-import 'screens/home_page.dart';
+import 'package:snap_hero/view/auth_view.dart';
+import 'package:snap_hero/view/listing_view.dart';
 
 void main() => runApp(MainApp());
 
