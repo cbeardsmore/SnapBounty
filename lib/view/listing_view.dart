@@ -12,7 +12,7 @@ class PrimaryPage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.exit_to_app),
-            onPressed: () => handleGoogleSignOut(context),
+            onPressed: () => signOut(context),
           ),
         ],
       ),
