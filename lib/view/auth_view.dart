@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:snap_hero/widgets/sign_in_button.dart';
 
 class AuthPage extends StatelessWidget {
   @override
@@ -6,7 +7,8 @@ class AuthPage extends StatelessWidget {
     return Stack(children: <Widget>[
       _buildBackground(),
       _buildLogo(context),
-      _buildLoginButton(context),
+      _buildGoogleLoginButton(context),
+      _buildFacebookLoginButton(context),
     ]);
   }
 
@@ -22,11 +24,14 @@ class AuthPage extends StatelessWidget {
   }
 
   Align _buildLogo(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height * 0.14;
+    final double width = MediaQuery.of(context).size.width * 0.80;
+
     return Align(
-      alignment: AlignmentDirectional(0, -0.75),
+      alignment: AlignmentDirectional(0, -0.78),
       child: Container(
-          height: MediaQuery.of(context).size.height * 0.14,
-          width: MediaQuery.of(context).size.width * 0.80,
+          height: height,
+          width: width,
           decoration: new BoxDecoration(
               border: new Border.all(
                   color: Theme.of(context).primaryColor, width: 5.0),
@@ -44,32 +49,24 @@ class AuthPage extends StatelessWidget {
     );
   }
 
-  Align _buildLoginButton(BuildContext context) {
-    return Align(
-      alignment: AlignmentDirectional(0, 0.8),
-      child: RaisedButton(
-        onPressed: () {
-          Navigator.pushReplacementNamed(context, '/primary');
-        },
-        color: Colors.white,
-        child: Container(
-          width: 230.0,
-          height: 50.0,
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Sign In',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+  SignInButton _buildGoogleLoginButton(BuildContext context) {
+    return SignInButton(
+      text: 'Sign in with Google',
+      image: 'assets/google_logo.png',
+      color: Colors.white,
+      yAlignment: 0.65,
+      onPressed: () => {},
+    );
+  }
+
+  SignInButton _buildFacebookLoginButton(BuildContext context) {
+    return SignInButton(
+      text: 'Continue with Facebook',
+      textColor: Colors.white,
+      image: 'assets/facebook_logo.png',
+      color: Color(0xFF4267B2),
+      yAlignment: 0.85,
+      onPressed: () => {},
     );
   }
 }
