@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snap_hero/widgets/sign_in_button.dart';
+import 'package:snap_hero/controller/auth.dart';
 
 class AuthPage extends StatelessWidget {
   @override
@@ -55,7 +56,7 @@ class AuthPage extends StatelessWidget {
       image: 'assets/google_logo.png',
       color: Colors.white,
       yAlignment: 0.65,
-      onPressed: () => {},
+      onPressed: () => handleGoogleSignIn(context),
     );
   }
 
@@ -65,7 +66,7 @@ class AuthPage extends StatelessWidget {
       textColor: Colors.white,
       image: 'assets/facebook_logo.png',
       color: Color(0xFF4267B2),
-      yAlignment: 0.85,
+      yAlignment: 0.83,
       onPressed: () => {},
     );
   }
