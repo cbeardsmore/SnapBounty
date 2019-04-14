@@ -67,7 +67,7 @@ class AuthPage extends StatelessWidget {
       image: 'assets/facebook_logo.png',
       color: Color(0xFF4267B2),
       yAlignment: 0.83,
-      onPressed: () => {},
+      onPressed: () => handleFacebookSignIn(context),
     );
   }
 }

@@ -4,6 +4,12 @@
 
 Flutter Application utilizing Google Firebase and MLkit.
 
+<img src="assets/screenshot.png" width="20%" height="20%">
+
+## Download
+
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" href="http://google.com" width="20%" height="20%">](https://play.google.com/store/apps/details?id=com.snap.hero)
+
 ## Build and Run
 
 - Install [Flutter](https://flutter.dev/docs/get-started/install) and confirm installation:

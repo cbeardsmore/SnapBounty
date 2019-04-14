@@ -17,6 +17,10 @@ jobs:
             echo Build Version: `cat /tmp/.version`
             echo Build Number: $CIRCLE_BUILD_NUM
 
+      - run:
+          name: Android Keystore Setup
+          command: .circleci/keystore.sh
+
       - run: 
           name: Flutter Build APK
           command: |

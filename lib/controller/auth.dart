@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -24,3 +25,19 @@ void handleGoogleSignOut(BuildContext context) async {
   _googleSignIn.signOut();
   Navigator.pushReplacementNamed(context, '/auth');
 }
+
+Future<void> handleFacebookSignIn(BuildContext context) async {
+  print('ping');
+  final FacebookLogin facebookLogin = FacebookLogin();
+  print('pong');
+  final FacebookLoginResult result = await facebookLogin.logInWithReadPermissions(['email']);
+  print('dong');
+  
+  if (result.status == FacebookLoginStatus.loggedIn) {
+    print("signed in via facebook");
+    Navigator.pushReplacementNamed(context, '/primary');
+  }
+}
+
+
+ 
