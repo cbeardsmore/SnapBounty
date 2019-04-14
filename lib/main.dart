@@ -11,11 +11,12 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'snapHero',
       theme: new ThemeData(
-        primaryColor: Colors.yellow,
-        accentColor: Colors.yellow,
+        primaryColor: Color(0xFF18FFFF),
+        primaryColorLight: Color(0xFF76FFFF),
+        primaryColorDark: Color(0xFF00CBCC),
+        accentColor: Color(0XFF37464F),
         cardColor: Colors.grey[300],
         iconTheme: new IconThemeData(color: Colors.black),
-        dividerColor: Colors.black,
       ),
       home: new AuthPage(),
       routes: {

@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 
 class GradientAppBar extends StatelessWidget {
   final String title;
-  final Color startColor = Color(0xFFFFFC00);
-  final Color endColor = Color(0xFFFF6600);
 
   GradientAppBar(this.title);
 
   @override
   Widget build(BuildContext context) {
+    final Color startColor = Theme.of(context).primaryColorLight;
+    final Color endColor = Theme.of(context).accentColor;
+
     final double statusBarHeight = MediaQuery.of(context).padding.top;
 
     return Container(
       padding: EdgeInsets.only(top: statusBarHeight),
-      decoration: gradient(),
+      decoration: gradient(startColor, endColor),
       child: Center(
         child: Text(
           title,
@@ -28,7 +29,7 @@ class GradientAppBar extends StatelessWidget {
     );
   }
 
-  BoxDecoration gradient() {
+  BoxDecoration gradient(Color startColor, Color endColor) {
     return BoxDecoration(
         gradient: LinearGradient(
       colors: [startColor, endColor],
