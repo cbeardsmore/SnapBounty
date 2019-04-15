@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:snap_hero/model/challenge.dart';
+import 'package:snap_hero/view/challenge_view.dart';
 
 class ChallengeList extends StatelessWidget {
   @override
@@ -26,22 +27,28 @@ class ChallengeList extends StatelessWidget {
 
   Card _buildListItem(BuildContext context, Challenge challenge) {
     Color baseColor = Theme.of(context).primaryColor;
-          return Card(
-            color: Theme.of(context).cardColor,
-            margin: EdgeInsets.all(8),
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: ListTile(
-                  leading: CircleAvatar(
-                      radius: 26,
-                      backgroundColor: baseColor,
-                      child: Image.network(
-                        challenge.icon,
-                        height: 40,
-                      )),
-                  title: Text(challenge.name, style: TextStyle(fontSize: 22))),
-            ),
-          );
-        
+    return Card(
+      color: Theme.of(context).cardColor,
+      margin: EdgeInsets.all(8),
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: ListTile(
+            leading: CircleAvatar(
+                radius: 26,
+                backgroundColor: baseColor,
+                child: Image.network(
+                  challenge.icon,
+                  height: 40,
+                )),
+            title: Text(challenge.name, style: TextStyle(fontSize: 22)),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ChallengePage(challenge)),
+              );
+            }),
+      ),
+    );
   }
 }
