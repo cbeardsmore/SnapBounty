@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:snap_hero/model/challenge.dart';
 import 'package:snap_hero/view/challenge_view.dart';
 
@@ -15,7 +16,9 @@ class ChallengeList extends StatelessWidget {
         builder: (context, snapshot) {
           if (!snapshot.hasData)
             return const Center(child: const CircularProgressIndicator());
-          return ListView.builder(
+          return GridView.builder(
+              gridDelegate:
+                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemCount: snapshot.data.documents.length,
               itemBuilder: (context, index) {
                 Challenge challenge =
@@ -26,28 +29,33 @@ class ChallengeList extends StatelessWidget {
   }
 
   Card _buildListItem(BuildContext context, Challenge challenge) {
-    Color baseColor = Theme.of(context).primaryColor;
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      clipBehavior: Clip.none,
       color: Theme.of(context).cardColor,
       margin: EdgeInsets.all(8),
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: ListTile(
-            leading: CircleAvatar(
-                radius: 26,
-                backgroundColor: baseColor,
-                child: Image.network(
-                  challenge.icon,
-                  height: 40,
-                )),
-            title: Text(challenge.name, style: TextStyle(fontSize: 22)),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ChallengePage(challenge)),
-              );
-            }),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChallengePage(challenge)),
+          );
+        },
+        child: GridTile(
+            header: GridTileBar(
+                title: Text(challenge.name,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        color: Colors.white))),
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: CachedNetworkImage(
+                  imageUrl: challenge.image,
+                  fit: BoxFit.cover,
+                ))),
       ),
     );
   }

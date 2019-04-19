@@ -15,6 +15,7 @@ dependencies:
   flutter_facebook_login: 2.0.0
   image_picker: 0.5.3
   firebase_ml_vision: 0.7.0
+  cached_network_image: 0.7.0
 
 dev_dependencies:
   flutter_test:
