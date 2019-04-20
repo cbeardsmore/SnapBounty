@@ -61,7 +61,7 @@ class ChallengePage extends StatelessWidget {
                   radius: 40,
                   backgroundColor: Theme.of(context).primaryColor,
                   child: Image.network(
-                    challenge.icon,
+                    challenge.image,
                     height: 60,
                   )),
             ),

@@ -4,13 +4,6 @@ import 'package:snap_hero/widgets/gradient_app_bar.dart';
 import 'package:snap_hero/model/challenge.dart';
 import 'package:snap_hero/provider/vision_provider.dart';
 
-String passIconUrl =
-    'https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/icons-face%2Fsmile.png?alt=media&token=55141f74-d1c8-418e-9fc6-6e36a753c8d1';
-String failIconUrl =
-    'https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/icons-face%2Fcry.png?alt=media&token=16105dfd-a776-4dde-8e59-bdaa9c111ed7';
-String neutralIconUrl =
-    'https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/icons-face%2Fneutral.png?alt=media&token=88dbac4d-2231-4f7a-86f2-05d03056cf34';
-
 class SnapPage extends StatelessWidget {
   final File image;
   final Challenge challenge;
@@ -63,8 +56,8 @@ class SnapPage extends StatelessWidget {
             Widget actualLeading = CircleAvatar(
                 backgroundColor: Colors.yellow,
                 foregroundColor: Theme.of(context).iconTheme.color,
-                child: Image.network(
-                  neutralIconUrl,
+                child: Image.asset(
+                  'assets/neutral.png',
                   height: 30,
                 ));
             if (snapshot.hasData) {
@@ -73,16 +66,16 @@ class SnapPage extends StatelessWidget {
                 actualLeading = CircleAvatar(
                     backgroundColor: Colors.lightGreenAccent,
                     foregroundColor: Theme.of(context).iconTheme.color,
-                    child: Image.network(
-                      passIconUrl,
+                    child: Image.asset(
+                      'assets/smile.png',
                       height: 30,
                     ));
               } else {
                 actualLeading = CircleAvatar(
                     backgroundColor: Colors.deepOrange,
                     foregroundColor: Theme.of(context).iconTheme.color,
-                    child: Image.network(
-                      failIconUrl,
+                    child: Image.asset(
+                      'assets/cry.png',
                       height: 30,
                     ));
               }

@@ -4,7 +4,6 @@ class Challenge {
   final String id;
   final String name;
   final String category;
-  final String icon;
   final String image;
   final Map<dynamic, dynamic> labels;
   final int xp;
@@ -14,7 +13,6 @@ class Challenge {
         name = snapshot['name'],
         category = snapshot['category'],
         image = snapshot['image'],
-        icon = snapshot['icon'],
         labels = snapshot['labels'],
         xp = snapshot['xp'];
 }

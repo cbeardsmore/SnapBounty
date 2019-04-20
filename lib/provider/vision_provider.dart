@@ -14,6 +14,7 @@ class VisionProvider {
     List<ImageLabel> labelsList = await imageLabeler.processImage(visionImage);
     Map<String, double> labelsMap = new Map.fromIterable(labelsList,
         key: (v) => v.text, value: (v) => v.confidence);
+    print(labelsMap);
     return labelsMap;
   }
 }
