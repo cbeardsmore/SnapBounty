@@ -13,29 +13,48 @@ class ChallengePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CameraProvider _cameraProvider = CameraProvider();
+
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: GradientAppBar(challenge.name),
-      ),
-      body: Container(child: _buildBody(context)),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Container(
-        width: MediaQuery.of(context).size.width * 0.35,
-        height: MediaQuery.of(context).size.height * 0.2,
-        child: FloatingActionButton(
-          onPressed: () => _cameraProvider.getImage(context, challenge),
-          tooltip: 'Pick Image',
-          child: Icon(Icons.add_a_photo, size: 70),
+        appBar: AppBar(
+          flexibleSpace: GradientAppBar(challenge.name),
+        ),
+        body: Stack(children: <Widget>[
+          _buildBackground(),
+          _buildBody(context),
+        ]),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton:
+            _buildFloatingActionButton(context, _cameraProvider));
+  }
+
+  Container _buildBackground() {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(challenge.image),
+          fit: BoxFit.cover,
         ),
       ),
     );
+  }
+
+  Container _buildFloatingActionButton(
+      BuildContext context, CameraProvider cameraProvider) {
+    return Container(
+        width: MediaQuery.of(context).size.width * 0.35,
+        height: MediaQuery.of(context).size.height * 0.2,
+        child: FloatingActionButton(
+          onPressed: () => cameraProvider.getImage(context, challenge),
+          tooltip: 'Pick Image',
+          child: Icon(Icons.add_a_photo, size: 70),
+        ));
   }
 
   Widget _buildBody(BuildContext context) {
     return Column(
       children: <Widget>[
         SizedBox(
-          height: 50,
+          height: 40,
           width: MediaQuery.of(context).size.width,
         ),
         _buildDetailsBox(context),
@@ -51,20 +70,10 @@ class ChallengePage extends StatelessWidget {
     return SizedBox(
       width: 300,
       child: new Card(
-        color: Theme.of(context).cardColor,
+        color: Theme.of(context).cardColor.withOpacity(0.5),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: new CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Theme.of(context).primaryColor,
-                  child: Image.network(
-                    challenge.image,
-                    height: 60,
-                  )),
-            ),
             new ListTile(
               leading: new CircleAvatar(
                 child: new Icon(Icons.local_offer),
@@ -98,7 +107,7 @@ class ChallengePage extends StatelessWidget {
     return SizedBox(
       width: 300,
       child: new Card(
-        color: Theme.of(context).cardColor,
+        color: Theme.of(context).cardColor.withOpacity(0.5),
         child: Column(children: _buildLabelsList(context)),
       ),
     );
