@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:snap_hero/model/challenge.dart';
 import 'package:snap_hero/view/challenge_view.dart';
-import 'package:snap_hero/controller/firestore.dart';
+import 'package:snap_hero/provider/firestore_provider.dart';
 
 class ChallengeList extends StatelessWidget {
   @override
@@ -11,8 +11,9 @@ class ChallengeList extends StatelessWidget {
   }
 
   StreamBuilder _buildList(BuildContext context) {
+    final FirestoreProvider _firestoreProvider = FirestoreProvider();
     return StreamBuilder(
-        stream: getChallenges(),
+        stream: _firestoreProvider.getChallenges(),
         builder: (context, snapshot) {
           if (!snapshot.hasData)
             return const Center(child: const CircularProgressIndicator());

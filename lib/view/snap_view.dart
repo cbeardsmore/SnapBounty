@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:snap_hero/widgets/gradient_app_bar.dart';
 import 'package:snap_hero/model/challenge.dart';
-import 'package:snap_hero/controller/vision.dart';
+import 'package:snap_hero/provider/vision_provider.dart';
 
 String passIconUrl =
     'https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/icons-face%2Fsmile.png?alt=media&token=55141f74-d1c8-418e-9fc6-6e36a753c8d1';
@@ -50,8 +50,9 @@ class SnapPage extends StatelessWidget {
   }
 
   Widget _buildLabelsList(BuildContext context) {
+    final VisionProvider _visionProvider = VisionProvider();
     return FutureBuilder(
-        future: getLabels(image),
+        future: _visionProvider.getLabels(image),
         builder: (BuildContext context,
             AsyncSnapshot<Map<String, double>> snapshot) {
           List<Widget> labelsBox = List();

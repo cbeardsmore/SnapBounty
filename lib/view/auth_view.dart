@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:snap_hero/widgets/sign_in_button.dart';
-import 'package:snap_hero/controller/auth.dart';
+import 'package:snap_hero/provider/auth_provider.dart';
 
 class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final AuthProvider _authProvider = AuthProvider();
     return Stack(children: <Widget>[
       _buildBackground(),
       _buildLogo(context),
-      _buildGoogleLoginButton(context),
-      _buildFacebookLoginButton(context),
+      _buildGoogleLoginButton(context, _authProvider),
+      _buildFacebookLoginButton(context, _authProvider),
     ]);
   }
 
@@ -50,24 +51,24 @@ class AuthPage extends StatelessWidget {
     );
   }
 
-  SignInButton _buildGoogleLoginButton(BuildContext context) {
+  SignInButton _buildGoogleLoginButton(BuildContext context, AuthProvider _authProvider) {
     return SignInButton(
       text: 'Sign in with Google',
       image: 'assets/google_logo.png',
       color: Colors.white,
       yAlignment: 0.65,
-      onPressed: () => handleGoogleSignIn(context),
+      onPressed: () => _authProvider.handleGoogleSignIn(context),
     );
   }
 
-  SignInButton _buildFacebookLoginButton(BuildContext context) {
+  SignInButton _buildFacebookLoginButton(BuildContext context, AuthProvider _authProvider) {
     return SignInButton(
       text: 'Continue with Facebook',
       textColor: Colors.white,
       image: 'assets/facebook_logo.png',
       color: Color(0xFF4267B2),
       yAlignment: 0.83,
-      onPressed: () => handleFacebookSignIn(context),
+      onPressed: () => _authProvider.handleGoogleSignIn(context),
     );
   }
 }

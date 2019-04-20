@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:snap_hero/model/challenge.dart';
 import 'package:snap_hero/widgets/gradient_app_bar.dart';
-import 'package:snap_hero/controller/image.dart';
+import 'package:snap_hero/provider/camera_provider.dart';
 
 class ChallengePage extends StatelessWidget {
   final Challenge challenge;
@@ -12,6 +12,7 @@ class ChallengePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CameraProvider _cameraProvider = CameraProvider();
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: GradientAppBar(challenge.name),
@@ -22,7 +23,7 @@ class ChallengePage extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.35,
         height: MediaQuery.of(context).size.height * 0.2,
         child: FloatingActionButton(
-          onPressed: () => getImage(context, challenge),
+          onPressed: () => _cameraProvider.getImage(context, challenge),
           tooltip: 'Pick Image',
           child: Icon(Icons.add_a_photo, size: 70),
         ),
