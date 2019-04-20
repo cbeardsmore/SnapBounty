@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:snap_hero/widgets/gradient_app_bar.dart';
 import 'package:snap_hero/model/challenge.dart';
 import 'package:snap_hero/provider/vision_provider.dart';
@@ -15,30 +15,38 @@ class SnapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: GradientAppBar(challenge.name),
-      ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding:
-                const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
-            child: ClipRRect(
-                borderRadius: new BorderRadius.circular(12.0),
-                child: Image.file(image)),
-          ),
-          _buildLabelsBox(context),
-        ],
+        appBar: AppBar(
+          flexibleSpace: GradientAppBar(challenge.name),
+        ),
+        body: Stack(
+          children: <Widget>[
+            _buildBackground(context),
+            _buildLabelsBox(context)
+          ],
+        ));
+  }
+
+  Container _buildBackground(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: FileImage(image),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
 
   Widget _buildLabelsBox(BuildContext context) {
-    return SizedBox(
-      width: 300,
-      child: Card(
-        elevation: 10,
-          color: Theme.of(context).cardColor, child: _buildLabelsList(context)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 60),
+      child: Container(
+        alignment: AlignmentDirectional(0, 0.6),
+            child: Card(
+                elevation: 10,
+                color: Theme.of(context).cardColor.withOpacity(0.5),
+                child: _buildLabelsList(context)),
+          ),
     );
   }
 
@@ -93,8 +101,8 @@ class SnapPage extends StatelessWidget {
                   style: TextStyle(fontSize: 18)),
             ));
           });
-          labelsBox.add(Text(snapshot.data.toString()));
           return Column(
+            mainAxisSize: MainAxisSize.min,
             children: labelsBox,
           );
         });
