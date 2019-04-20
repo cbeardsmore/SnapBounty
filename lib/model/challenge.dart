@@ -5,7 +5,7 @@ class Challenge {
   final String name;
   final String category;
   final String image;
-  final Map<dynamic, dynamic> labels;
+  final Map<String, double> labels;
   final int xp;
 
   Challenge.fromDocument(DocumentSnapshot snapshot)
@@ -13,6 +13,6 @@ class Challenge {
         name = snapshot['name'],
         category = snapshot['category'],
         image = snapshot['image'],
-        labels = snapshot['labels'],
+        labels = Map.from(snapshot['labels']),
         xp = snapshot['xp'];
 }
