@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:snap_hero/model/challenge.dart';
 import 'package:snap_hero/widgets/gradient_app_bar.dart';
 import 'package:snap_hero/provider/camera_provider.dart';
@@ -31,7 +32,7 @@ class ChallengePage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage(challenge.image),
+          image: CachedNetworkImageProvider(challenge.image),
           fit: BoxFit.cover,
         ),
       ),
