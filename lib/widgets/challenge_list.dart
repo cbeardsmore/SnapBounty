@@ -1,10 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:snap_hero/model/challenge.dart';
+import 'package:snap_hero/model/player.dart';
 import 'package:snap_hero/view/challenge_view.dart';
 import 'package:snap_hero/provider/firestore_provider.dart';
+import 'package:snap_hero/provider/auth_provider.dart';
 
-class ChallengeList extends StatelessWidget {
+class ChallengeList extends StatefulWidget {
+  @override
+  _ChallengeListState createState() => _ChallengeListState();
+}
+
+class _ChallengeListState extends State<ChallengeList> {
+  final FirestoreProvider _firestoreProvider = FirestoreProvider();
+  final AuthProvider _authProvider = AuthProvider();
+  List<String> _completedChallenges;
+
+  @override
+  void initState() {
+    super.initState();
+    setCompletedChallenges();
+  }
+
+  void setCompletedChallenges() async {
+    String playerId = await _authProvider.getUserId();
+    Player player = await _firestoreProvider.getPlayer(playerId);
+    setState(() {
+      _completedChallenges = player.completed;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return _buildList(context);
@@ -30,10 +55,14 @@ class ChallengeList extends StatelessWidget {
   }
 
   Card _buildListItem(BuildContext context, Challenge challenge) {
+    bool completed = _completedChallenges.contains(challenge.id);
+    BorderSide side = completed
+        ? BorderSide(color: Colors.lightGreenAccent[400], width: 5)
+        : BorderSide.none;
+
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30.0),
-      ),
+          borderRadius: BorderRadius.circular(10.0), side: side),
       clipBehavior: Clip.none,
       color: Theme.of(context).cardColor,
       margin: EdgeInsets.all(8),
