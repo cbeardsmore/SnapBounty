@@ -41,5 +41,55 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb525637631270138</string>
+			</array>
+		</dict>
+	</array>
+
+	<!-- Google Sign-in -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.126956930865-q2hp7vb2mi00r9etltdgj2dh41126c7r</string>
+			</array>
+		</dict>
+	</array>
+	<!-- End Google Sign-in -->
+
+	<!-- Facebook Sign-in -->
+	<key>FacebookAppID</key>
+	<string>525637631270138</string>
+
+	<key>FacebookDisplayName</key>
+	<string>snapHero</string>
+
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
+	<!-- End Facebook Sign-in -->
+
+	<!-- Image Picker Permissions -->
+	<key>NSCameraUsageDescription</key>
+	<string>Used to demonstrate image picker plugin</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Used to capture audio for image picker plugin</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to demonstrate image picker plugin</string>
+	<!-- End Image Picker -->
+	
 </dict>
 </plist>
