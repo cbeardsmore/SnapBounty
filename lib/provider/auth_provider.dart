@@ -44,4 +44,9 @@ class AuthProvider {
   void signOut(BuildContext context) {
     Navigator.pushReplacementNamed(context, '/auth');
   }
+
+  Future<String> getUserId() async {
+    FirebaseUser user = await _auth.currentUser();
+    return user.uid;
+  }
 }

@@ -6,4 +6,10 @@ class FirestoreProvider {
   Stream<QuerySnapshot> getChallenges() {
     return _firestore.collection('challenges').snapshots();
   }
+
+  void completeChallenge(String playerId, String challengeId) async {
+    _firestore.collection('players').document(playerId).updateData({
+      'completed': FieldValue.arrayUnion(List.from({challengeId}))
+    });
+  }
 }

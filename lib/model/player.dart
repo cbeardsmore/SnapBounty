@@ -6,5 +6,5 @@ class Player {
 
   Player.fromDocument(DocumentSnapshot snapshot)
       : id = snapshot.documentID,
-        completed = snapshot['completed'];
+        completed = snapshot['completed'].cast<String>();
 }
