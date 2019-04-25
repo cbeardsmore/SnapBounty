@@ -12,6 +12,7 @@ class ChallengeResultController {
 
   Future<ChallengeResult> attemptChallenge(
       File image, Challenge challenge) async {
+        print(image.toString());
     Map<String, double> labels = await _visionProvider.getLabels(image);
     bool isSuccess = true;
     challenge.labels.forEach((k, v) {

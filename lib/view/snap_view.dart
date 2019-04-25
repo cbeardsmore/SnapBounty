@@ -45,7 +45,13 @@ class _SnapPageState extends State<SnapPage> {
         body: Stack(
           children: <Widget>[
             _buildBackground(context),
-            _buildLabelsBox(context)
+            _buildLabelsBox(context),
+            _challengeResult != null
+                ? Text(
+                    _challengeResult.labels.toString(),
+                    style: TextStyle(color: Colors.white),
+                  )
+                : Text('')
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -81,16 +87,19 @@ class _SnapPageState extends State<SnapPage> {
     labelsBox.add(Text('Results',
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)));
     widget.challenge.labels.forEach((k, v) {
-      String actualConfidence = '0.0';
+      double actualConfidence = 0.0;
       Widget actualLeading =
           _buildLeadingAvatar(context, Colors.yellow, 'assets/neutral.png');
       if (_challengeResult != null) {
-        if (_challengeResult.labels[k] != null &&
-            _challengeResult.labels[k] >= v) {
-          actualConfidence = _challengeResult.labels[k].toStringAsFixed(1);
+        if (_challengeResult.labels[k] != null) {
+          actualConfidence = _challengeResult.labels[k];
+        }
+
+        if (actualConfidence >= v) {
           actualLeading = _buildLeadingAvatar(
               context, Colors.lightGreenAccent[400], 'assets/smile.png');
-        } else {
+        } else if (actualConfidence < (v - 0.1)) {
+          print(_challengeResult.labels.toString());
           actualLeading =
               _buildLeadingAvatar(context, Colors.red, 'assets/cry.png');
         }
@@ -104,7 +113,7 @@ class _SnapPageState extends State<SnapPage> {
           capitalize(k),
           style: TextStyle(fontSize: 20),
         ),
-        trailing: Text(actualConfidence + '/' + v.toString(),
+        trailing: Text(actualConfidence.toStringAsFixed(1) + '/' + v.toString(),
             style: TextStyle(fontSize: 18)),
       ));
     });

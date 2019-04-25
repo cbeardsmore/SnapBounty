@@ -6,5 +6,7 @@ class Player {
 
   Player.fromDocument(DocumentSnapshot snapshot)
       : id = snapshot.documentID,
-        completed = snapshot['completed'].cast<String>();
+        completed = snapshot['completed'] != null
+            ? snapshot['completed'].cast<String>()
+            : List();
 }

@@ -58,7 +58,7 @@ class _ChallengeListState extends State<ChallengeList> {
     bool completed = _completedChallenges != null &&
         _completedChallenges.contains(challenge.id);
     BorderSide side = completed
-        ? BorderSide(color: Colors.lightGreenAccent[400], width: 5)
+        ? BorderSide(color: Colors.lightGreenAccent[400], width: 8)
         : BorderSide.none;
 
     return Card(

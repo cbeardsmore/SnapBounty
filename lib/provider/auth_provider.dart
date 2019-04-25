@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:snap_hero/provider/firestore_provider.dart';
 
 class AuthProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FacebookLogin _facebookLogin = FacebookLogin();
+  final FirestoreProvider _firestoreProvider = FirestoreProvider();
 
   Future<void> handleGoogleSignIn(BuildContext context) async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -38,6 +40,7 @@ class AuthProvider {
     await _auth.signInWithCredential(credential);
     final FirebaseUser user = await _auth.currentUser();
     print(user.email + " ---- " + user.uid);
+    _firestoreProvider.createPlayer(user.uid, user.email);
     Navigator.pushReplacementNamed(context, '/primary');
   }
 
