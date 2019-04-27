@@ -22,7 +22,7 @@ jobs:
           command: .circleci/keystore.sh
 
       - run: 
-          name: Flutter Build APK
+          name: Flutter Build - Android
           command: |
             VERSION=$(cat /tmp/.version)
             flutter build apk --build-name=$VERSION --build-number=$CIRCLE_BUILD_NUM --target-platform=android-arm64
@@ -30,6 +30,16 @@ jobs:
       - store_artifacts:
           path: ./build/app/outputs/apk/release/app-release.apk
           destination: .apk/snaphero.apk
+
+      - run: 
+          name: Flutter Build - iOS
+          command: |
+            VERSION=$(cat /tmp/.version)
+            flutter build ios --build-name=$VERSION --build-number=$CIRCLE_BUILD_NUM
+
+      - store_artifacts:
+          path: ./build/ios/iphoneos/Runner.app.
+          destination: .ios/snaphero.app
           
 workflows:
   version: 2
