@@ -1,6 +1,6 @@
 # snapHero
 
-[![CircleCI](https://circleci.com/gh/cbeardsmore/snapHero/tree/master.svg?style=shield&circle-token=9ca4a7a3ff62077d8c752a5e59e7974bfc700ce5)](https://circleci.com/gh/cbeardsmore/snapHero/tree/master)
+[![Codemagic build status](https://api.codemagic.io/apps/5cc4077b572d3c1c16eb788a/5cc4077b572d3c1c16eb7889/status_badge.svg)](https://codemagic.io/apps/5cc4077b572d3c1c16eb788a/5cc4077b572d3c1c16eb7889/latest_build)
 
 Flutter Application utilizing Google Firebase and MLkit.
 
