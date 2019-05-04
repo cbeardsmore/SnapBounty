@@ -4,8 +4,7 @@
 
 Flutter Application utilizing Google Firebase and MLkit.
 
-
-<img src="assets/screenshot.png" width="20%" height="20%">
+<img src="screenshots/auth_view.png" width="20%" height="20%">
 
 ## Download
 
