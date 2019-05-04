@@ -1,6 +1,8 @@
 name: snap_hero
+version: 0.1.0
 description: Photography Game utilizing Firebase and ML Kit
-
+author: Connor Beardsmore <connor.beardsmore@gmail.com>
+homepage: https://cbeardsmore.github.io
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
