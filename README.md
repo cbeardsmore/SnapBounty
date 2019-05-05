@@ -1,6 +1,6 @@
-# snapHero
+# SnapBounty
 
-[![Codemagic build status](https://api.codemagic.io/apps/5cc4077b572d3c1c16eb788a/5cc4077b572d3c1c16eb7889/status_badge.svg)](https://codemagic.io/apps/5cc4077b572d3c1c16eb788a/5cc4077b572d3c1c16eb7889/latest_build)
+[![Codemagic build status](https://api.codemagic.io/apps/5cce565044381500175b547e/5cce565044381500175b547d/status_badge.svg)](https://codemagic.io/apps/5cce565044381500175b547e/5cce565044381500175b547d/latest_build)
 
 Flutter Application utilizing Google Firebase and MLkit.
 
@@ -8,7 +8,7 @@ Flutter Application utilizing Google Firebase and MLkit.
 
 ## Download
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" href="http://google.com" width="20%" height="20%">](https://play.google.com/store/apps/details?id=com.snap.hero)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" href="http://google.com" width="20%" height="20%">](https://play.google.com/store/apps/details?id=com.cbeardsmore.snapbounty)
 
 ## Build and Run
 
