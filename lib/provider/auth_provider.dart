@@ -4,11 +4,15 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:snap_bounty/provider/firestore_provider.dart';
 
+enum Provider { GOOGLE, FACEBOOK }
+Provider identityProvider;
+
 class AuthProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FacebookLogin _facebookLogin = FacebookLogin();
   final FirestoreProvider _firestoreProvider = FirestoreProvider();
+
 
   Future<void> handleGoogleSignIn(BuildContext context) async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -20,6 +24,7 @@ class AuthProvider {
       idToken: googleAuth.idToken,
     );
 
+    identityProvider = Provider.GOOGLE;
     await firebaseSignIn(context, credential);
   }
 
@@ -30,6 +35,7 @@ class AuthProvider {
       final FacebookAccessToken accessToken = result.accessToken;
       final AuthCredential credential =
           FacebookAuthProvider.getCredential(accessToken: accessToken.token);
+      identityProvider = Provider.FACEBOOK;
       await firebaseSignIn(context, credential);
     }
     return null;
@@ -45,6 +51,12 @@ class AuthProvider {
   }
 
   void signOut(BuildContext context) {
+    if (identityProvider == Provider.GOOGLE) {
+      _googleSignIn.signOut();
+    } else if (identityProvider == Provider.FACEBOOK) {
+      _facebookLogin.logOut();
+    }
+    print(identityProvider.toString());
     Navigator.pushReplacementNamed(context, '/auth');
   }
 
