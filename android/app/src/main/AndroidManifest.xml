@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.snap.hero">
+    package="com.cbeardsmore.snapbounty">
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="snapHero"
+        android:label="SnapBounty"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round">
         <activity

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:snap_hero/model/challenge.dart';
-import 'package:snap_hero/model/player.dart';
-import 'package:snap_hero/view/challenge_view.dart';
-import 'package:snap_hero/provider/firestore_provider.dart';
-import 'package:snap_hero/provider/auth_provider.dart';
+import 'package:snap_bounty/model/challenge.dart';
+import 'package:snap_bounty/model/player.dart';
+import 'package:snap_bounty/view/challenge_view.dart';
+import 'package:snap_bounty/provider/firestore_provider.dart';
+import 'package:snap_bounty/provider/auth_provider.dart';
 
 class ChallengeList extends StatefulWidget {
   @override

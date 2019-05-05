@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">snapHero</string>
+    <string name="app_name">SnapBounty</string>
     <string name="facebook_app_id">525637631270138</string>
     <string name="fb_login_protocol_scheme">fb525637631270138</string>
 </resources>

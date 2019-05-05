@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:snap_hero/widgets/sign_in_button.dart';
-import 'package:snap_hero/provider/auth_provider.dart';
+import 'package:snap_bounty/widgets/sign_in_button.dart';
+import 'package:snap_bounty/provider/auth_provider.dart';
 
 class AuthPage extends StatelessWidget {
   @override
@@ -41,7 +41,7 @@ class AuthPage extends StatelessWidget {
                   new BorderRadius.only(topLeft: new Radius.circular(50.0))),
           child: Center(
             child: Text(
-              'snapHero',
+              'SnapBounty',
               style: Theme.of(context).textTheme.title.copyWith(
                   color: Theme.of(context).primaryColor,
                   fontSize: 50,

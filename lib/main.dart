@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:snap_hero/view/auth_view.dart';
-import 'package:snap_hero/view/listing_view.dart';
+import 'package:snap_bounty/view/auth_view.dart';
+import 'package:snap_bounty/view/listing_view.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'snapHero',
+      title: 'SnapBounty',
       theme: new ThemeData(
         primaryColor: Color(0xFF18FFFF),
         primaryColorLight: Color(0xFF76FFFF),

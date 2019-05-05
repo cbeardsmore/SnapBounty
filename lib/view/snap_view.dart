@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:snap_hero/widgets/gradient_app_bar.dart';
-import 'package:snap_hero/model/challenge.dart';
-import 'package:snap_hero/model/challenge_result.dart';
-import 'package:snap_hero/controller/challenge_result_controller.dart';
+import 'package:snap_bounty/widgets/gradient_app_bar.dart';
+import 'package:snap_bounty/model/challenge.dart';
+import 'package:snap_bounty/model/challenge_result.dart';
+import 'package:snap_bounty/controller/challenge_result_controller.dart';
 
 class SnapPage extends StatefulWidget {
   final File image;

@@ -1,4 +1,4 @@
-package com.snap.hero;
+package com.cbeardsmore.snapbounty;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

@@ -8,12 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:126956930865:android:c1a23b3e35588b95",
+        "mobilesdk_app_id": "1:126956930865:android:cf8c62dd848866bf",
         "android_client_info": {
-          "package_name": "com.snap.hero"
+          "package_name": "com.cbeardsmore.snapbounty"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "126956930865-5mmbtf7aon03em2usmqf6l1nioqq7dul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBtHUqVg0Dh1kN9bNCps0Rf4cKGp6IsfDk"
@@ -30,7 +35,59 @@
               "client_id": "126956930865-q2hp7vb2mi00r9etltdgj2dh41126c7r.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.snap.hero"
+                "bundle_id": "com.cbeardsmore.snapbounty"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126956930865:android:c1a23b3e35588b95",
+        "android_client_info": {
+          "package_name": "com.cbeardsmore.snapbounty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126956930865-pgb3krd8g7d5oe5ireq5fqstrue8vcqc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cbeardsmore.snapbounty",
+            "certificate_hash": "f1fbfd6d4fbfbfd97b2bfc29b83e75fdb862b6cb"
+          }
+        },
+        {
+          "client_id": "126956930865-bqmf179jrehls04etcdeovkg155k3svl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cbeardsmore.snapbounty",
+            "certificate_hash": "71121fce624b7c01a5e6abc28dca72acccf483ac"
+          }
+        },
+        {
+          "client_id": "126956930865-5mmbtf7aon03em2usmqf6l1nioqq7dul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtHUqVg0Dh1kN9bNCps0Rf4cKGp6IsfDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126956930865-5mmbtf7aon03em2usmqf6l1nioqq7dul.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "126956930865-q2hp7vb2mi00r9etltdgj2dh41126c7r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cbeardsmore.snapbounty"
               }
             }
           ]

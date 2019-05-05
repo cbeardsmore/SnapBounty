@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'package:snap_hero/provider/vision_provider.dart';
-import 'package:snap_hero/provider/firestore_provider.dart';
-import 'package:snap_hero/provider/auth_provider.dart';
-import 'package:snap_hero/model/challenge.dart';
-import 'package:snap_hero/model/challenge_result.dart';
+import 'package:snap_bounty/provider/vision_provider.dart';
+import 'package:snap_bounty/provider/firestore_provider.dart';
+import 'package:snap_bounty/provider/auth_provider.dart';
+import 'package:snap_bounty/model/challenge.dart';
+import 'package:snap_bounty/model/challenge_result.dart';
 
 class ChallengeResultController {
   final VisionProvider _visionProvider = VisionProvider();

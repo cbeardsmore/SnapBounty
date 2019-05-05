@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:snap_hero/model/challenge.dart';
-import 'package:snap_hero/widgets/gradient_app_bar.dart';
-import 'package:snap_hero/provider/camera_provider.dart';
+import 'package:snap_bounty/model/challenge.dart';
+import 'package:snap_bounty/widgets/gradient_app_bar.dart';
+import 'package:snap_bounty/provider/camera_provider.dart';
 
 class ChallengePage extends StatelessWidget {
   final Challenge challenge;

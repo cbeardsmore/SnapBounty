@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:snap_hero/model/player.dart';
+import 'package:snap_bounty/model/player.dart';
 
 class FirestoreProvider {
   static const String COLLECTION_CHALLENGES = 'challenges';
