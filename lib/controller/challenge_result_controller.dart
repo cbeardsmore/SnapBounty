@@ -23,7 +23,7 @@ class ChallengeResultController {
 
     if (isSuccess) {
       String userId = await _authProvider.getUserId(); 
-      _firestoreProvider.completeChallenge(userId, challenge.id);
+      _firestoreProvider.completeChallenge(userId, challenge.id, challenge.xp);
     }
 
     return ChallengeResult(isSuccess: isSuccess, labels: labels);

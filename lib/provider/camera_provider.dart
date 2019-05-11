@@ -6,7 +6,7 @@ import 'package:snap_bounty/view/snap_view.dart';
 
 class CameraProvider {
   void getImage(BuildContext context, Challenge challenge) async {
-    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    File image = await ImagePicker.pickImage(source: ImageSource.camera);
     if (image == null) return;
     Navigator.pushAndRemoveUntil(
       context,

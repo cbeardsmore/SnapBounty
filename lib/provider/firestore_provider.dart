@@ -11,17 +11,17 @@ class FirestoreProvider {
     return _firestore.collection(COLLECTION_CHALLENGES).snapshots();
   }
 
-  void completeChallenge(String playerId, String challengeId) async {
+  void completeChallenge(String playerId, String challengeId, int challengeXp) async {
     _firestore.collection(COLLECTION_PLAYERS).document(playerId).updateData({
-      'completed': FieldValue.arrayUnion([challengeId])
+      'completed': FieldValue.arrayUnion([challengeId]),
+      'xp': FieldValue.increment(challengeXp)
     });
   }
 
   void createPlayer(String id, String email) async {
-    _firestore
-        .collection(COLLECTION_PLAYERS)
-        .document(id)
-        .setData({'email': email, 'completed': FieldValue.arrayUnion([])}, merge: true);
+    _firestore.collection(COLLECTION_PLAYERS).document(id).setData(
+        {'email': email, 'xp:': 0, 'completed': FieldValue.arrayUnion([])},
+        merge: true);
   }
 
   Future<Player> getPlayer(String playerId) async {
