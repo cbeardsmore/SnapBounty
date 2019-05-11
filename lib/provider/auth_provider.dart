@@ -64,4 +64,11 @@ class AuthProvider {
     FirebaseUser user = await _auth.currentUser();
     return user.uid;
   }
+
+  Future<String> getUserPhotoUrl() async {
+    FirebaseUser user = await _auth.currentUser();
+    print(user);
+    print(user.photoUrl);
+    return user.photoUrl;
+  }
 }
