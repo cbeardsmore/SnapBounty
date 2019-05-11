@@ -26,7 +26,6 @@ class MainApp extends StatelessWidget {
       home: new AuthPage(),
       routes: {
         "/auth": (_) => AuthPage(),
-        "/primary": (_) => PrimaryPage(),
       },
     );
   }

@@ -20,7 +20,7 @@ class FirestoreProvider {
 
   void createPlayer(String id, String email) async {
     _firestore.collection(COLLECTION_PLAYERS).document(id).setData(
-        {'email': email, 'xp:': 0, 'completed': FieldValue.arrayUnion([])},
+        {'email': email, 'xp': 0, 'completed': FieldValue.arrayUnion([])},
         merge: true);
   }
 
