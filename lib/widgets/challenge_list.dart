@@ -15,6 +15,7 @@ class _ChallengeListState extends State<ChallengeList> {
   final FirestoreProvider _firestoreProvider = FirestoreProvider();
   final AuthProvider _authProvider = AuthProvider();
   List<String> _completedChallenges;
+  String filter;
 
   @override
   void initState() {
@@ -37,8 +38,9 @@ class _ChallengeListState extends State<ChallengeList> {
 
   StreamBuilder _buildList(BuildContext context) {
     final FirestoreProvider _firestoreProvider = FirestoreProvider();
+
     return StreamBuilder(
-        stream: _firestoreProvider.getChallenges(),
+        stream: _firestoreProvider.getChallenges(filter: filter),
         builder: (context, snapshot) {
           if (!snapshot.hasData)
             return const Center(child: const CircularProgressIndicator());

@@ -7,11 +7,17 @@ class FirestoreProvider {
 
   final Firestore _firestore = Firestore.instance;
 
-  Stream<QuerySnapshot> getChallenges() {
-    return _firestore.collection(COLLECTION_CHALLENGES).snapshots();
+  Stream<QuerySnapshot> getChallenges({filter}) {
+    CollectionReference collection = _firestore.collection(COLLECTION_CHALLENGES);
+    if (filter != null) {
+      return collection.where('category', isEqualTo: filter).snapshots();
+    }
+
+    return collection.snapshots();
   }
 
-  void completeChallenge(String playerId, String challengeId, int challengeXp) async {
+  void completeChallenge(
+      String playerId, String challengeId, int challengeXp) async {
     _firestore.collection(COLLECTION_PLAYERS).document(playerId).updateData({
       'completed': FieldValue.arrayUnion([challengeId]),
       'xp': FieldValue.increment(challengeXp)
