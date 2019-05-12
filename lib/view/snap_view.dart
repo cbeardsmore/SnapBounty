@@ -4,6 +4,7 @@ import 'package:snap_bounty/widgets/gradient_app_bar.dart';
 import 'package:snap_bounty/model/challenge.dart';
 import 'package:snap_bounty/model/challenge_result.dart';
 import 'package:snap_bounty/controller/challenge_result_controller.dart';
+import 'package:snap_bounty/view/primary_view.dart';
 
 class SnapPage extends StatefulWidget {
   final File image;
@@ -142,7 +143,8 @@ class _SnapPageState extends State<SnapPage> {
         child: FloatingActionButton(
           backgroundColor: success ? Colors.lightGreenAccent[400] : Colors.red,
           foregroundColor: Theme.of(context).accentColor,
-          onPressed: () => Navigator.pushReplacementNamed(context, '/primary'),
+          onPressed: () => Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => PrimaryPage())),
           tooltip: success ? 'Challenge Completed!' : 'Try Again?',
           child: Icon(success ? Icons.check : Icons.clear, size: 50),
         ));

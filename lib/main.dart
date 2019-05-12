@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:snap_bounty/provider/auth_provider.dart';
 import 'package:snap_bounty/view/auth_view.dart';
-import 'package:snap_bounty/view/listing_view.dart';
+import 'package:snap_bounty/view/primary_view.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
@@ -15,18 +17,33 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SnapBounty',
-      theme: new ThemeData(
+      theme: ThemeData(
         primaryColor: Color(0xFF18FFFF),
         primaryColorLight: Color(0xFF76FFFF),
         primaryColorDark: Color(0xFF00CBCC),
         accentColor: Color(0XFF37464F),
         cardColor: Colors.grey[300],
-        iconTheme: new IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.black),
       ),
-      home: new AuthPage(),
-      routes: {
-        "/auth": (_) => AuthPage(),
-      },
+      home: _handleCurrentScreen(),
     );
+  }
+
+  Widget _handleCurrentScreen() {
+    final AuthProvider _authProvider = AuthProvider();
+
+    return StreamBuilder<FirebaseUser>(
+        stream: _authProvider.getAuthStateStream(),
+        builder: (BuildContext context, snapshot) {
+          print(snapshot.connectionState);
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return new CircularProgressIndicator();
+          } else {
+            if (snapshot.hasData) {
+              return PrimaryPage();
+            }
+            return AuthPage();
+          }
+        });
   }
 }

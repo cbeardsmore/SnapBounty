@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:snap_bounty/provider/firestore_provider.dart';
-import 'package:snap_bounty/view/listing_view.dart';
+import 'package:snap_bounty/view/auth_view.dart';
+import 'package:snap_bounty/view/primary_view.dart';
 
 enum Provider { GOOGLE, FACEBOOK }
 Provider identityProvider;
@@ -13,6 +14,14 @@ class AuthProvider {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FacebookLogin _facebookLogin = FacebookLogin();
   final FirestoreProvider _firestoreProvider = FirestoreProvider();
+
+  Stream<FirebaseUser> getAuthStateStream() {
+    return _auth.onAuthStateChanged;
+  }
+
+  Future<FirebaseUser> getCurrentUser(){
+    return _auth.currentUser();
+  }
 
   Future<void> handleGoogleSignIn(BuildContext context) async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -45,10 +54,9 @@ class AuthProvider {
       BuildContext context, AuthCredential credential) async {
     await _auth.signInWithCredential(credential);
     final FirebaseUser user = await _auth.currentUser();
-    print(user.email + " ---- " + user.uid);
     _firestoreProvider.createPlayer(user.uid, user.email);
     Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => PrimaryPage(user: user)));
+        MaterialPageRoute(builder: (context) => PrimaryPage()));
   }
 
   void signOut(BuildContext context) {
@@ -57,8 +65,8 @@ class AuthProvider {
     } else if (identityProvider == Provider.FACEBOOK) {
       _facebookLogin.logOut();
     }
-    print(identityProvider.toString());
-    Navigator.pushReplacementNamed(context, '/auth');
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => AuthPage()));
   }
 
   Future<String> getUserId() async {
@@ -68,8 +76,6 @@ class AuthProvider {
 
   Future<String> getUserPhotoUrl() async {
     FirebaseUser user = await _auth.currentUser();
-    print(user);
-    print(user.photoUrl);
     return user.photoUrl;
   }
 }

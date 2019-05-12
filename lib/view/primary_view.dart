@@ -4,14 +4,32 @@ import 'package:snap_bounty/widgets/challenge_list.dart';
 import 'package:snap_bounty/provider/auth_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class PrimaryPage extends StatelessWidget {
-  final FirebaseUser user;
+class PrimaryPage extends StatefulWidget {
 
-  PrimaryPage({this.user});
+  @override
+  _PrimaryPageState createState() => _PrimaryPageState();
+}
+
+class _PrimaryPageState extends State<PrimaryPage> {
+  final AuthProvider _authProvider = AuthProvider();
+
+  FirebaseUser user;
+
+  @override
+  void initState() {
+    super.initState();
+    setUser();
+  }
+
+  void setUser() async {
+    FirebaseUser user = await _authProvider.getCurrentUser();
+    setState(() {
+      this.user = user;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final AuthProvider _authProvider = AuthProvider();
 
     return Scaffold(
         appBar: AppBar(
@@ -22,10 +40,10 @@ class PrimaryPage extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountEmail: Text(user.email),
-              accountName: Text(user.displayName),
+              accountEmail: Text(user != null ? user.email : ''),
+              accountName: Text(user != null ? user.displayName : ''),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: NetworkImage(user.photoUrl),
+                backgroundImage: NetworkImage(user != null ? user.photoUrl : ''),
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.5),
