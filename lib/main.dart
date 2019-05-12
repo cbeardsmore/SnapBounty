@@ -40,7 +40,7 @@ class MainApp extends StatelessWidget {
             return new CircularProgressIndicator();
           } else {
             if (snapshot.hasData) {
-              return PrimaryPage();
+              return PrimaryApp();
             }
             return AuthPage();
           }

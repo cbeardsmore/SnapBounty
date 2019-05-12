@@ -5,6 +5,7 @@ import 'package:snap_bounty/model/player.dart';
 import 'package:snap_bounty/view/challenge_view.dart';
 import 'package:snap_bounty/provider/firestore_provider.dart';
 import 'package:snap_bounty/provider/auth_provider.dart';
+import 'package:snap_bounty/view/primary_view.dart';
 
 class ChallengeList extends StatefulWidget {
   @override
@@ -38,7 +39,9 @@ class _ChallengeListState extends State<ChallengeList> {
 
   StreamBuilder _buildList(BuildContext context) {
     final FirestoreProvider _firestoreProvider = FirestoreProvider();
-
+    final PrimaryInheritedWidget _primaryInheritedWidget = PrimaryInheritedWidget.of(context);
+    String filter = _primaryInheritedWidget?.data?.filter;
+    print(filter);
     return StreamBuilder(
         stream: _firestoreProvider.getChallenges(filter: filter),
         builder: (context, snapshot) {

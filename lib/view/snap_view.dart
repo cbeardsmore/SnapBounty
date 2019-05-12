@@ -144,7 +144,7 @@ class _SnapPageState extends State<SnapPage> {
           backgroundColor: success ? Colors.lightGreenAccent[400] : Colors.red,
           foregroundColor: Theme.of(context).accentColor,
           onPressed: () => Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => PrimaryPage())),
+              context, MaterialPageRoute(builder: (context) => PrimaryApp())),
           tooltip: success ? 'Challenge Completed!' : 'Try Again?',
           child: Icon(success ? Icons.check : Icons.clear, size: 50),
         ));

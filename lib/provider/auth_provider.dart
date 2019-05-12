@@ -56,7 +56,7 @@ class AuthProvider {
     final FirebaseUser user = await _auth.currentUser();
     _firestoreProvider.createPlayer(user.uid, user.email);
     Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => PrimaryPage()));
+        MaterialPageRoute(builder: (context) => PrimaryApp()));
   }
 
   void signOut(BuildContext context) {
