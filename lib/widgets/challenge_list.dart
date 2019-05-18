@@ -4,34 +4,9 @@ import 'package:snap_bounty/model/challenge.dart';
 import 'package:snap_bounty/model/player.dart';
 import 'package:snap_bounty/view/challenge_view.dart';
 import 'package:snap_bounty/provider/firestore_provider.dart';
-import 'package:snap_bounty/provider/auth_provider.dart';
 import 'package:snap_bounty/view/primary_view.dart';
 
-class ChallengeList extends StatefulWidget {
-  @override
-  _ChallengeListState createState() => _ChallengeListState();
-}
-
-class _ChallengeListState extends State<ChallengeList> {
-  final FirestoreProvider _firestoreProvider = FirestoreProvider();
-  final AuthProvider _authProvider = AuthProvider();
-  List<String> _completedChallenges;
-  String filter;
-
-  @override
-  void initState() {
-    super.initState();
-    setCompletedChallenges();
-  }
-
-  void setCompletedChallenges() async {
-    String playerId = await _authProvider.getUserId();
-    Player player = await _firestoreProvider.getPlayer(playerId);
-    setState(() {
-      _completedChallenges = player.completed;
-    });
-  }
-
+class ChallengeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _buildList(context);
@@ -39,7 +14,8 @@ class _ChallengeListState extends State<ChallengeList> {
 
   StreamBuilder _buildList(BuildContext context) {
     final FirestoreProvider _firestoreProvider = FirestoreProvider();
-    final PrimaryInheritedWidget _primaryInheritedWidget = PrimaryInheritedWidget.of(context);
+    final PrimaryInheritedWidget _primaryInheritedWidget =
+        PrimaryInheritedWidget.of(context);
     String filter = _primaryInheritedWidget?.data?.filter;
 
     return StreamBuilder(
@@ -60,8 +36,14 @@ class _ChallengeListState extends State<ChallengeList> {
   }
 
   Card _buildListItem(BuildContext context, Challenge challenge) {
-    bool completed = _completedChallenges != null &&
-        _completedChallenges.contains(challenge.id);
+    final PrimaryInheritedWidget _primaryInheritedWidget =
+        PrimaryInheritedWidget.of(context);
+    final Player player = _primaryInheritedWidget?.data?.player;
+    final List<String> completedChallenges = player?.completed;
+
+    bool completed = completedChallenges != null &&
+        completedChallenges.contains(challenge.id);
+
     BorderSide side = completed
         ? BorderSide(color: Colors.lightGreenAccent[400], width: 5)
         : BorderSide.none;

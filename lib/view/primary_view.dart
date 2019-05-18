@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:snap_bounty/provider/firestore_provider.dart';
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
 import 'package:snap_bounty/widgets/challenge_list.dart';
 import 'package:snap_bounty/provider/auth_provider.dart';
+import 'package:snap_bounty/model/player.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class PrimaryApp extends StatefulWidget {
@@ -16,7 +18,12 @@ class PrimaryApp extends StatefulWidget {
 }
 
 class PrimaryAppState extends State<PrimaryApp> {
+  final AuthProvider _authProvider = AuthProvider();
+  final FirestoreProvider _firestoreProvider = FirestoreProvider();
+
   String filter;
+  FirebaseUser user;
+  Player player;
 
   void setFilter(String filter) {
     setState(() {
@@ -28,9 +35,20 @@ class PrimaryAppState extends State<PrimaryApp> {
     return filter;
   }
 
+  void setUserAndPlayer() async {
+    FirebaseUser user = await _authProvider.getCurrentUser();
+    Player player = await _firestoreProvider.getPlayer(user.uid);
+
+    setState(() {
+      this.user = user;
+      this.player = player;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
+    setUserAndPlayer();
     filter = null;
   }
 
@@ -53,29 +71,7 @@ class PrimaryInheritedWidget extends InheritedWidget {
       context.inheritFromWidgetOfExactType(PrimaryInheritedWidget);
 }
 
-class PrimaryPage extends StatefulWidget {
-  @override
-  _PrimaryPageState createState() => _PrimaryPageState();
-}
-
-class _PrimaryPageState extends State<PrimaryPage> {
-  final AuthProvider _authProvider = AuthProvider();
-
-  FirebaseUser user;
-
-  @override
-  void initState() {
-    super.initState();
-    setUser();
-  }
-
-  void setUser() async {
-    FirebaseUser user = await _authProvider.getCurrentUser();
-    setState(() {
-      this.user = user;
-    });
-  }
-
+class PrimaryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,16 +82,20 @@ class _PrimaryPageState extends State<PrimaryPage> {
             child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            _buildUserDrawerHeader(),
-            _buildFilters(),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.5),
-            _buildButtons(),
+            _buildUserDrawerHeader(context),
+            _buildFilters(context),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.3),
+            _buildButtons(context),
           ],
         )),
         body: ChallengeList());
   }
 
-  Widget _buildUserDrawerHeader() {
+  Widget _buildUserDrawerHeader(BuildContext context) {
+    final PrimaryInheritedWidget _primaryInheritedWidget =
+        PrimaryInheritedWidget.of(context);
+    final FirebaseUser user = _primaryInheritedWidget.data.user;
+
     return UserAccountsDrawerHeader(
       accountEmail: Text(user != null ? user?.email : ''),
       accountName: Text(user != null ? user.displayName : ''),
@@ -105,7 +105,7 @@ class _PrimaryPageState extends State<PrimaryPage> {
     );
   }
 
-  Widget _buildFilters() {
+  Widget _buildFilters(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 4.0),
       child: Container(
@@ -123,13 +123,13 @@ class _PrimaryPageState extends State<PrimaryPage> {
               spacing: 5,
               runSpacing: -5,
               children: <Widget>[
-                _buildFilterChip('Activities'),
-                _buildFilterChip('Animals'),
-                _buildFilterChip('Home'),
-                _buildFilterChip('People'),
-                _buildFilterChip('Places'),
-                _buildFilterChip('Things'),
-                _buildFilterChip('Transport')
+                _buildFilterChip(context, 'Activities'),
+                _buildFilterChip(context, 'Animals'),
+                _buildFilterChip(context, 'Home'),
+                _buildFilterChip(context, 'People'),
+                _buildFilterChip(context, 'Places'),
+                _buildFilterChip(context, 'Things'),
+                _buildFilterChip(context, 'Transport')
               ],
             ),
           ],
@@ -138,7 +138,7 @@ class _PrimaryPageState extends State<PrimaryPage> {
     );
   }
 
-  Widget _buildFilterChip(String label) {
+  Widget _buildFilterChip(BuildContext context, String label) {
     final PrimaryInheritedWidget _primaryInheritedWidget =
         PrimaryInheritedWidget.of(context);
 
@@ -153,7 +153,8 @@ class _PrimaryPageState extends State<PrimaryPage> {
         });
   }
 
-  Widget _buildButtons() {
+  Widget _buildButtons(BuildContext context) {
+    final AuthProvider _authProvider = AuthProvider();
     return ListTile(
         leading: Icon(Icons.exit_to_app),
         title: Text('Sign Out'),
