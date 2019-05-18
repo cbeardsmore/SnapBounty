@@ -1,10 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:snap_bounty/widgets/gradient_app_bar.dart';
-import 'package:snap_bounty/model/challenge.dart';
-import 'package:snap_bounty/model/challenge_result.dart';
+
+import 'package:snap_bounty/app_state.dart';
 import 'package:snap_bounty/controller/challenge_result_controller.dart';
-import 'package:snap_bounty/view/primary_view.dart';
+import 'package:snap_bounty/model/challenge_result.dart';
+import 'package:snap_bounty/model/challenge.dart';
+import 'package:snap_bounty/widgets/gradient_app_bar.dart';
 
 class SnapPage extends StatefulWidget {
   final File image;
@@ -30,8 +31,11 @@ class _SnapPageState extends State<SnapPage> {
   }
 
   void setLabels() async {
-    ChallengeResult updatedResult = await _challengeResultController
-        .attemptChallenge(widget.image, widget.challenge);
+    final PrimaryInheritedWidget _primaryInheritedWidget =
+        PrimaryInheritedWidget.of(context);
+    ChallengeResult updatedResult =
+        await _challengeResultController.attemptChallenge(widget.image,
+            widget.challenge, _primaryInheritedWidget.data.player);
     setState(() {
       _challengeResult = updatedResult;
     });

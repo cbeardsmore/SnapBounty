@@ -1,18 +1,17 @@
 import 'dart:io';
-import 'package:snap_bounty/provider/vision_provider.dart';
-import 'package:snap_bounty/provider/firestore_provider.dart';
-import 'package:snap_bounty/provider/auth_provider.dart';
-import 'package:snap_bounty/model/challenge.dart';
+
 import 'package:snap_bounty/model/challenge_result.dart';
+import 'package:snap_bounty/model/challenge.dart';
+import 'package:snap_bounty/model/player.dart';
+import 'package:snap_bounty/provider/firestore_provider.dart';
+import 'package:snap_bounty/provider/vision_provider.dart';
 
 class ChallengeResultController {
   final VisionProvider _visionProvider = VisionProvider();
-  final AuthProvider _authProvider = AuthProvider();
   final FirestoreProvider _firestoreProvider = FirestoreProvider();
 
   Future<ChallengeResult> attemptChallenge(
-      File image, Challenge challenge) async {
-        print(image.toString());
+      File image, Challenge challenge, Player player) async {
     Map<String, double> labels = await _visionProvider.getLabels(image);
     bool isSuccess = true;
     challenge.labels.forEach((k, v) {
@@ -21,9 +20,9 @@ class ChallengeResultController {
       }
     });
 
-    if (isSuccess) {
-      String userId = await _authProvider.getUserId(); 
-      _firestoreProvider.completeChallenge(userId, challenge.id, challenge.xp);
+    if (isSuccess && !player.completed.contains(challenge.id)) {
+      print('adding dat xp boi');
+      _firestoreProvider.completeChallenge(player.id, challenge.id, challenge.xp);
     }
 
     return ChallengeResult(isSuccess: isSuccess, labels: labels);

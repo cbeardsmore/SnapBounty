@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import 'package:snap_bounty/app_state.dart';
 import 'package:snap_bounty/provider/firestore_provider.dart';
 import 'package:snap_bounty/view/auth_view.dart';
-import 'package:snap_bounty/view/primary_view.dart';
 
 enum Provider { GOOGLE, FACEBOOK }
 Provider identityProvider;

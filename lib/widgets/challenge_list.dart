@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+
+import 'package:snap_bounty/app_state.dart';
 import 'package:snap_bounty/model/challenge.dart';
 import 'package:snap_bounty/model/player.dart';
-import 'package:snap_bounty/view/challenge_view.dart';
 import 'package:snap_bounty/provider/firestore_provider.dart';
-import 'package:snap_bounty/view/primary_view.dart';
+import 'package:snap_bounty/view/challenge_view.dart';
 
 class ChallengeList extends StatelessWidget {
   @override
