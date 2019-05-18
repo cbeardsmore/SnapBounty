@@ -24,6 +24,10 @@ class PrimaryAppState extends State<PrimaryApp> {
     });
   }
 
+  String getFilter() {
+    return filter;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -74,7 +78,6 @@ class _PrimaryPageState extends State<PrimaryPage> {
 
   @override
   Widget build(BuildContext context) {
-    final PrimaryInheritedWidget _primaryInheritedWidget = PrimaryInheritedWidget.of(context);
     return Scaffold(
         appBar: AppBar(
           flexibleSpace: GradientAppBar('Challenges'),
@@ -83,26 +86,77 @@ class _PrimaryPageState extends State<PrimaryPage> {
             child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountEmail: Text(user != null ? user.email : ''),
-              accountName: Text(user != null ? user.displayName : ''),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage:
-                    NetworkImage(user != null ? user.photoUrl : ''),
-              ),
-            ),
-            RaisedButton(
-              child: Text('press me'),
-              onPressed: () => _primaryInheritedWidget.data.setFilter('Activities'),
-            ),
+            _buildUserDrawerHeader(),
+            _buildFilters(),
             SizedBox(height: MediaQuery.of(context).size.height * 0.5),
-            Divider(height: 5),
-            ListTile(
-                leading: Icon(Icons.exit_to_app),
-                title: Text('Sign Out'),
-                onTap: () => _authProvider.signOut(context)),
+            _buildButtons(),
           ],
         )),
         body: ChallengeList());
+  }
+
+  Widget _buildUserDrawerHeader() {
+    return UserAccountsDrawerHeader(
+      accountEmail: Text(user != null ? user?.email : ''),
+      accountName: Text(user != null ? user.displayName : ''),
+      currentAccountPicture: CircleAvatar(
+        backgroundImage: NetworkImage(user != null ? user.photoUrl : ''),
+      ),
+    );
+  }
+
+  Widget _buildFilters() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 4.0),
+      child: Container(
+        alignment: Alignment.center,
+        child: Column(
+          children: <Widget>[
+            Text(
+              'Category Filter',
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Wrap(
+              spacing: 5,
+              runSpacing: -5,
+              children: <Widget>[
+                _buildFilterChip('Activities'),
+                _buildFilterChip('Animals'),
+                _buildFilterChip('Home'),
+                _buildFilterChip('People'),
+                _buildFilterChip('Places'),
+                _buildFilterChip('Things'),
+                _buildFilterChip('Transport')
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFilterChip(String label) {
+    final PrimaryInheritedWidget _primaryInheritedWidget =
+        PrimaryInheritedWidget.of(context);
+
+    return FilterChip(
+        label: Text(label),
+        backgroundColor: Theme.of(context).cardColor,
+        selectedColor: Colors.grey[600],
+        selected: _primaryInheritedWidget.data.getFilter() == label,
+        onSelected: (isSelected) {
+          String newFilter = isSelected ? label : null;
+          _primaryInheritedWidget.data.setFilter(newFilter);
+        });
+  }
+
+  Widget _buildButtons() {
+    return ListTile(
+        leading: Icon(Icons.exit_to_app),
+        title: Text('Sign Out'),
+        onTap: () => _authProvider.signOut(context));
   }
 }
