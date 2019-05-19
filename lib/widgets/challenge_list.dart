@@ -64,11 +64,18 @@ class ChallengeList extends StatelessWidget {
         },
         child: GridTile(
             header: GridTileBar(
-                title: Text(challenge.name,
+                leading: Align(
+              alignment: Alignment.topLeft,
+              child: Chip(
+                backgroundColor: Colors.transparent,
+                padding: EdgeInsets.zero,
+                label: Text(challenge.name,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                        color: Colors.white))),
+                        fontSize: 16,
+                        color: Colors.white)),
+              ),
+            )),
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: CachedNetworkImage(

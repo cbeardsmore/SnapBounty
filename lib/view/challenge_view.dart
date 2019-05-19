@@ -124,7 +124,7 @@ class ChallengePage extends StatelessWidget {
     ));
     challenge.labels.forEach((k, v) {
       labelsBox.add(Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 60),
+        padding: const EdgeInsets.symmetric(horizontal: 40),
         child: ListTile(
           title: new Text(
             capitalize(k),

@@ -60,6 +60,7 @@ class PrimaryPage extends StatelessWidget {
               children: <Widget>[
                 _buildFilterChip(context, 'Activities'),
                 _buildFilterChip(context, 'Animals'),
+                _buildFilterChip(context, 'Food & Drink'),
                 _buildFilterChip(context, 'Home'),
                 _buildFilterChip(context, 'People'),
                 _buildFilterChip(context, 'Places'),
