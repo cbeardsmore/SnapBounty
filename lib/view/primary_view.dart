@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:snap_bounty/app_state.dart';
+import 'package:snap_bounty/model/player.dart';
 import 'package:snap_bounty/provider/auth_provider.dart';
 import 'package:snap_bounty/widgets/challenge_list.dart';
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
@@ -9,6 +10,15 @@ import 'package:snap_bounty/widgets/gradient_app_bar.dart';
 class PrimaryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final PrimaryInheritedWidget _primaryInheritedWidget =
+        PrimaryInheritedWidget.of(context);
+    final Player player = _primaryInheritedWidget.data.player;
+
+    List<Widget> bodyStack = [ChallengeList()];
+    if (!player.tutorialComplete) {
+      bodyStack.add(Text('ssdsdsdsd'));
+    }
+
     return Scaffold(
         appBar: AppBar(
           flexibleSpace: GradientAppBar('Challenges'),
@@ -23,7 +33,9 @@ class PrimaryPage extends StatelessWidget {
             _buildButtons(context),
           ],
         )),
-        body: ChallengeList());
+        body: Stack(
+          children: bodyStack,
+        ));
   }
 
   Widget _buildUserDrawerHeader(BuildContext context) {

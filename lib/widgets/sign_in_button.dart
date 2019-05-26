@@ -14,6 +14,7 @@ class SignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height * 0.07;
     final double width = MediaQuery.of(context).size.width * 0.6;
+    final double imageSize = MediaQuery.of(context).size.width * 0.07;
 
     return Align(
       alignment: AlignmentDirectional(0, yAlignment),
@@ -21,17 +22,18 @@ class SignInButton extends StatelessWidget {
         onPressed: onPressed ?? null,
         color: color,
         child: Container(
+          constraints: BoxConstraints(maxWidth: 300),
           width: width,
           height: height,
           alignment: Alignment.center,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 20.0),
+                padding: const EdgeInsets.only(right: 15.0),
                 child: Image.asset(
                   image,
-                  width: 30.0,
+                  width: imageSize,
                 ),
               ),
               Text(

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:snap_bounty/model/challenge.dart';
@@ -56,7 +57,7 @@ class ChallengePage extends StatelessWidget {
     return Column(
       children: <Widget>[
         SizedBox(
-          height: 40,
+          height: 50,
           width: MediaQuery.of(context).size.width,
         ),
         _buildDetailsBox(context),
@@ -69,11 +70,11 @@ class ChallengePage extends StatelessWidget {
   }
 
   Widget _buildDetailsBox(BuildContext context) {
-    return SizedBox(
-      width: 300,
+    return Container(
+      width: 280,
       child: new Card(
         color: Theme.of(context).cardColor.withOpacity(0.5),
-        child: Column(
+        child: Column( 
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             new ListTile(
@@ -84,7 +85,7 @@ class ChallengePage extends StatelessWidget {
               ),
               title:
                   new Text(challenge.category, style: TextStyle(fontSize: 20)),
-              trailing: new Text('Category', style: TextStyle(fontSize: 10)),
+              trailing: new Text('Category', style: TextStyle(fontSize: 12)),
             ),
             new Divider(
               height: 5.0,
@@ -97,7 +98,7 @@ class ChallengePage extends StatelessWidget {
               ),
               title: new Text(challenge.xp.toString(),
                   style: TextStyle(fontSize: 20)),
-              trailing: new Text('XP', style: TextStyle(fontSize: 10)),
+              trailing: new Text('XP', style: TextStyle(fontSize: 12)),
             )
           ],
         ),
@@ -107,7 +108,7 @@ class ChallengePage extends StatelessWidget {
 
   Widget _buildLabelsBox(BuildContext context) {
     return SizedBox(
-      width: 300,
+      width: 280,
       child: new Card(
         color: Theme.of(context).cardColor.withOpacity(0.5),
         child: Column(children: _buildLabelsList(context)),
@@ -123,16 +124,16 @@ class ChallengePage extends StatelessWidget {
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
     ));
     challenge.labels.forEach((k, v) {
-      labelsBox.add(Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: ListTile(
+      labelsBox.add(
+        ListTile(
+          contentPadding: EdgeInsets.symmetric(horizontal: 40),
           title: new Text(
             capitalize(k),
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20, ),
           ),
           trailing: new Text(v.toString(), style: TextStyle(fontSize: 20)),
         ),
-      ));
+      );
       labelsBox.add(new Divider(
         height: 5.0,
       ));

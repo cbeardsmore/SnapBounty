@@ -31,11 +31,8 @@ class _SnapPageState extends State<SnapPage> {
   }
 
   void setLabels() async {
-    final PrimaryInheritedWidget _primaryInheritedWidget =
-        PrimaryInheritedWidget.of(context);
-    ChallengeResult updatedResult =
-        await _challengeResultController.attemptChallenge(widget.image,
-            widget.challenge, _primaryInheritedWidget.data.player);
+    ChallengeResult updatedResult = await _challengeResultController
+        .attemptChallenge(widget.image, widget.challenge);
     setState(() {
       _challengeResult = updatedResult;
     });
@@ -75,16 +72,18 @@ class _SnapPageState extends State<SnapPage> {
   }
 
   Widget _buildLabelsBox(BuildContext context) {
+    Widget innerChild = CircularProgressIndicator();
+    if (_challengeResult != null) {
+      innerChild = Card(
+          elevation: 10,
+          color: Theme.of(context).cardColor.withOpacity(0.5),
+          child: _buildLabelsList(context));
+    }
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 60),
-      child: Container(
-        alignment: AlignmentDirectional(0, 0.5),
-        child: Card(
-            elevation: 10,
-            color: Theme.of(context).cardColor.withOpacity(0.5),
-            child: _buildLabelsList(context)),
-      ),
-    );
+        padding: const EdgeInsets.symmetric(horizontal: 60),
+        child: Container(
+            alignment: AlignmentDirectional(0, 0.5), child: innerChild));
   }
 
   Widget _buildLabelsList(BuildContext context) {
@@ -95,20 +94,19 @@ class _SnapPageState extends State<SnapPage> {
       double actualConfidence = 0.0;
       Widget actualLeading =
           _buildLeadingAvatar(context, Colors.yellow, 'assets/neutral.png');
-      if (_challengeResult != null) {
-        if (_challengeResult.labels[k] != null) {
-          actualConfidence = _challengeResult.labels[k];
-        }
-
-        if (actualConfidence >= v) {
-          actualLeading = _buildLeadingAvatar(
-              context, Colors.lightGreenAccent[400], 'assets/smile.png');
-        } else if (actualConfidence < (v - 0.1)) {
-          print(_challengeResult.labels.toString());
-          actualLeading =
-              _buildLeadingAvatar(context, Colors.red, 'assets/cry.png');
-        }
+      if (_challengeResult.labels[k] != null) {
+        actualConfidence = _challengeResult.labels[k];
       }
+
+      if (actualConfidence >= v) {
+        actualLeading = _buildLeadingAvatar(
+            context, Colors.lightGreenAccent[400], 'assets/smile.png');
+      } else if (actualConfidence < (v - 0.1)) {
+        print(_challengeResult.labels.toString());
+        actualLeading =
+            _buildLeadingAvatar(context, Colors.red, 'assets/cry.png');
+      }
+
       labelsBox.add(Divider(
         height: 5.0,
       ));

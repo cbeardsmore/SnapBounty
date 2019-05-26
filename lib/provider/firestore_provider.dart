@@ -8,7 +8,8 @@ class FirestoreProvider {
   final Firestore _firestore = Firestore.instance;
 
   Stream<QuerySnapshot> getChallenges({filter}) {
-    CollectionReference collection = _firestore.collection(COLLECTION_CHALLENGES);
+    CollectionReference collection =
+        _firestore.collection(COLLECTION_CHALLENGES);
     if (filter != null) {
       return collection.where('category', isEqualTo: filter).snapshots();
     }
@@ -25,9 +26,19 @@ class FirestoreProvider {
   }
 
   void createPlayer(String id, String email) async {
-    _firestore.collection(COLLECTION_PLAYERS).document(id).setData(
-        {'email': email, 'xp': 0, 'completed': FieldValue.arrayUnion([])},
-        merge: true);
+    DocumentSnapshot existing =
+        await _firestore.collection(COLLECTION_PLAYERS).document(id).get();
+    if (existing == null) {
+      _firestore.collection(COLLECTION_PLAYERS).document(id).setData(
+        {
+          'email': email,
+          'xp': 0,
+          'created': Timestamp.now(),
+          'tutorialComplete': false,
+          'completed': FieldValue.arrayUnion([])
+        },
+      );
+    }
   }
 
   Future<Player> getPlayer(String playerId) async {

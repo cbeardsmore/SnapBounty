@@ -4,7 +4,9 @@ class Player {
   final String id;
   final List<String> completed;
   final int xp;
-  
+  final Timestamp created;
+  final bool tutorialComplete;
+
   String photoUrl;
 
   Player.fromDocument(DocumentSnapshot snapshot)
@@ -12,5 +14,7 @@ class Player {
         completed = snapshot['completed'] != null
             ? snapshot['completed'].cast<String>()
             : List(),
-        xp = snapshot['xp'];
+        xp = snapshot['xp'],
+        created = snapshot['created'],
+        tutorialComplete = snapshot['tutorialComplete'];
 }
