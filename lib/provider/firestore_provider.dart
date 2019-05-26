@@ -42,7 +42,6 @@ class FirestoreProvider {
           'xp': 0,
           'created': Timestamp.now(),
           'lastLogin': Timestamp.now(),
-          'tutorialComplete': false,
           'completed': FieldValue.arrayUnion([])
         },
       );
