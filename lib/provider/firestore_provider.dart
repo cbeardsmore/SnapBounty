@@ -28,12 +28,20 @@ class FirestoreProvider {
   void createPlayer(String id, String email) async {
     DocumentSnapshot existing =
         await _firestore.collection(COLLECTION_PLAYERS).document(id).get();
-    if (existing == null) {
+    if (existing != null) {
+      _firestore.collection(COLLECTION_PLAYERS).document(id).setData(
+        {
+          'lastLogin': Timestamp.now(),
+        },
+        merge: true,
+      );
+    } else {
       _firestore.collection(COLLECTION_PLAYERS).document(id).setData(
         {
           'email': email,
           'xp': 0,
           'created': Timestamp.now(),
+          'lastLogin': Timestamp.now(),
           'tutorialComplete': false,
           'completed': FieldValue.arrayUnion([])
         },
