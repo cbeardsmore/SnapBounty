@@ -20,7 +20,7 @@ class AuthProvider {
     return _auth.onAuthStateChanged;
   }
 
-  Future<FirebaseUser> getCurrentUser(){
+  Future<FirebaseUser> getCurrentUser() {
     return _auth.currentUser();
   }
 
@@ -56,8 +56,8 @@ class AuthProvider {
     await _auth.signInWithCredential(credential);
     final FirebaseUser user = await _auth.currentUser();
     _firestoreProvider.createPlayer(user.uid, user.email);
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => PrimaryApp()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => PrimaryApp()));
   }
 
   void signOut(BuildContext context) {
