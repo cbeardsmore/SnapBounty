@@ -63,21 +63,19 @@ class ChallengeList extends StatelessWidget {
           );
         },
         child: GridTile(
-            header: GridTileBar(
-                leading: Align(
+            header: FittedBox(
+              fit: BoxFit.scaleDown,
               alignment: Alignment.topLeft,
-              child: Chip(
-                backgroundColor: Colors.transparent,
-                padding: EdgeInsets.zero,
-                label: FittedBox(
-                  fit: BoxFit.contain,
-                  child: Text(challenge.name,
+              child: GridTileBar(
+                leading: Chip(
+                  backgroundColor: Colors.transparent,
+                  padding: EdgeInsets.zero,
+                  label: Text(challenge.name,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white)),
+                          fontWeight: FontWeight.bold, color: Colors.white)),
                 ),
               ),
-            )),
+            ),
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: CachedNetworkImage(
