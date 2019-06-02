@@ -5,6 +5,7 @@ import 'package:snap_bounty/app_state.dart';
 import 'package:snap_bounty/provider/auth_provider.dart';
 import 'package:snap_bounty/widgets/challenge_list.dart';
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
+import 'package:snap_bounty/view/tutorial_view.dart';
 
 class PrimaryPage extends StatelessWidget {
   @override
@@ -14,12 +15,10 @@ class PrimaryPage extends StatelessWidget {
           flexibleSpace: GradientAppBar('Challenges'),
         ),
         drawer: Drawer(
-            child: ListView(
-          padding: EdgeInsets.zero,
+            child: Column(
           children: <Widget>[
             _buildUserDrawerHeader(context),
             _buildFilters(context),
-            Divider(height: 10),
             _buildButtons(context),
           ],
         )),
@@ -41,17 +40,15 @@ class PrimaryPage extends StatelessWidget {
   }
 
   Widget _buildFilters(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 4.0),
+    return Expanded(
       child: Container(
-        alignment: Alignment.center,
         child: Column(
           children: <Widget>[
             Text(
               'Category Filter',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            Divider(
               height: 10,
             ),
             Wrap(
@@ -91,9 +88,28 @@ class PrimaryPage extends StatelessWidget {
 
   Widget _buildButtons(BuildContext context) {
     final AuthProvider _authProvider = AuthProvider();
-    return ListTile(
-        leading: Icon(Icons.exit_to_app),
-        title: Text('Sign Out'),
-        onTap: () => _authProvider.signOut(context));
+    return Container(
+      alignment: Alignment.bottomCenter,
+      child: Column(
+        children: <Widget>[
+          Divider(height: 10),
+          ListTile(
+              leading: Icon(Icons.help),
+              title: Text(
+                'How to Play',
+                style: TextStyle(fontSize: 16),
+              ),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TutorialPage()))),
+          ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text(
+                'Sign Out',
+                style: TextStyle(fontSize: 16),
+              ),
+              onTap: () => _authProvider.signOut(context)),
+        ],
+      ),
+    );
   }
 }

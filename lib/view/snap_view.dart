@@ -48,12 +48,12 @@ class _SnapPageState extends State<SnapPage> {
           children: <Widget>[
             _buildBackground(context),
             _buildLabelsBox(context),
-            _challengeResult != null
-                ? Text(
-                    _challengeResult.labels.toString(),
-                    style: TextStyle(color: Colors.white),
-                  )
-                : Text('')
+            // _challengeResult != null
+            //     ? Text(
+            //         _challengeResult.labels.toString(),
+            //         style: TextStyle(color: Colors.white),
+            //       )
+            //     : Text('')
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
