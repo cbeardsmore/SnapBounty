@@ -8,7 +8,13 @@ class SignInButton extends StatelessWidget {
   final double yAlignment;
   final VoidCallback onPressed;
 
-  SignInButton({this.text, this.textColor, this.image, this.color, this.yAlignment, this.onPressed});
+  SignInButton(
+      {this.text,
+      this.textColor,
+      this.image,
+      this.color,
+      this.yAlignment,
+      this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +36,21 @@ class SignInButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Image.asset(
                   image,
                   width: imageSize,
                 ),
               ),
-              Text(
-                text,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: 16.0,
+              Expanded(
+                child: FittedBox(fit: BoxFit.contain,
+                  child: Text(
+                    text,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: textColor,
+                    ),
+                  ),
                 ),
               ),
             ],

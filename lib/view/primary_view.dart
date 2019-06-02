@@ -19,7 +19,7 @@ class PrimaryPage extends StatelessWidget {
           children: <Widget>[
             _buildUserDrawerHeader(context),
             _buildFilters(context),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.3),
+            Divider(height: 10),
             _buildButtons(context),
           ],
         )),

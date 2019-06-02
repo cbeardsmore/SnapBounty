@@ -32,14 +32,17 @@ class AuthPage extends StatelessWidget {
     return Align(
       alignment: AlignmentDirectional(0, -0.78),
       child: Container(
-          height: height,
-          width: width,
-          decoration: new BoxDecoration(
-              border: new Border.all(
-                  color: Theme.of(context).primaryColor, width: 5.0),
-              borderRadius:
-                  new BorderRadius.only(topLeft: new Radius.circular(50.0))),
-          child: Center(
+        height: height,
+        width: width,
+        decoration: new BoxDecoration(
+            border: new Border.all(
+                color: Theme.of(context).primaryColor, width: 5.0),
+            borderRadius:
+                new BorderRadius.only(topLeft: new Radius.circular(50.0))),
+        child: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
             child: Text(
               'SnapBounty',
               style: Theme.of(context).textTheme.title.copyWith(
@@ -47,11 +50,14 @@ class AuthPage extends StatelessWidget {
                   fontSize: 50,
                   fontWeight: FontWeight.w500),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 
-  SignInButton _buildGoogleLoginButton(BuildContext context, AuthProvider _authProvider) {
+  SignInButton _buildGoogleLoginButton(
+      BuildContext context, AuthProvider _authProvider) {
     return SignInButton(
       text: 'Sign in with Google',
       image: 'assets/google_logo.png',
@@ -61,7 +67,8 @@ class AuthPage extends StatelessWidget {
     );
   }
 
-  SignInButton _buildFacebookLoginButton(BuildContext context, AuthProvider _authProvider) {
+  SignInButton _buildFacebookLoginButton(
+      BuildContext context, AuthProvider _authProvider) {
     return SignInButton(
       text: 'Continue with Facebook',
       textColor: Colors.white,

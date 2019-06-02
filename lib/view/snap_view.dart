@@ -80,16 +80,22 @@ class _SnapPageState extends State<SnapPage> {
           child: _buildLabelsList(context));
     }
 
-    return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 60),
-        child: Container(
-            alignment: AlignmentDirectional(0, 0.5), child: innerChild));
+    return Center(
+      child: Container(
+          constraints: BoxConstraints(maxWidth: 400),
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: Container(
+              alignment: AlignmentDirectional(0, 0.4), child: innerChild)),
+    );
   }
 
   Widget _buildLabelsList(BuildContext context) {
     List<Widget> labelsBox = List();
-    labelsBox.add(Text('Results',
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)));
+    labelsBox.add(Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text('Results',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+    ));
     widget.challenge.labels.forEach((k, v) {
       double actualConfidence = 0.0;
       Widget actualLeading =
@@ -139,9 +145,11 @@ class _SnapPageState extends State<SnapPage> {
   Container _buildFloatingActionButton(BuildContext context) {
     if (_challengeResult == null) return Container();
     bool success = _challengeResult.isSuccess;
+    Size mediaSize = MediaQuery.of(context).size;
+
     return Container(
-        width: MediaQuery.of(context).size.width * 0.2,
-        height: MediaQuery.of(context).size.height * 0.2,
+        width: mediaSize.width * 0.2,
+        height: mediaSize.height * 0.2,
         child: FloatingActionButton(
           backgroundColor: success ? Colors.lightGreenAccent[400] : Colors.red,
           foregroundColor: Theme.of(context).accentColor,

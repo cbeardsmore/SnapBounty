@@ -54,15 +54,16 @@ class ChallengePage extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context) {
+    Size mediaSize = MediaQuery.of(context).size;
     return Column(
       children: <Widget>[
         SizedBox(
-          height: 50,
-          width: MediaQuery.of(context).size.width,
+          height: mediaSize.height * 0.05,
+          width: mediaSize.width,
         ),
         _buildDetailsBox(context),
         SizedBox(
-          height: 20,
+          height: mediaSize.height * 0.02,
         ),
         _buildLabelsBox(context),
       ],
@@ -71,34 +72,35 @@ class ChallengePage extends StatelessWidget {
 
   Widget _buildDetailsBox(BuildContext context) {
     return Container(
-      width: 280,
-      child: new Card(
+      constraints: BoxConstraints(maxWidth: 400),
+      width: MediaQuery.of(context).size.width * 0.8,
+      child: Card(
         color: Theme.of(context).cardColor.withOpacity(0.5),
-        child: Column( 
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            new ListTile(
-              leading: new CircleAvatar(
-                child: new Icon(Icons.local_offer),
+            ListTile(
+              leading: CircleAvatar(
+                child: Icon(Icons.local_offer),
                 backgroundColor: Theme.of(context).primaryColor,
                 foregroundColor: Theme.of(context).iconTheme.color,
               ),
               title:
-                  new Text(challenge.category, style: TextStyle(fontSize: 20)),
-              trailing: new Text('Category', style: TextStyle(fontSize: 12)),
+                  Text(challenge.category, style: TextStyle(fontSize: 20)),
+              trailing: Text('Category', style: TextStyle(fontSize: 12)),
             ),
-            new Divider(
+            Divider(
               height: 5.0,
             ),
-            new ListTile(
-              leading: new CircleAvatar(
-                child: new Icon(Icons.star),
+            ListTile(
+              leading: CircleAvatar(
+                child: Icon(Icons.star),
                 backgroundColor: Theme.of(context).primaryColor,
                 foregroundColor: Theme.of(context).iconTheme.color,
               ),
-              title: new Text(challenge.xp.toString(),
+              title: Text(challenge.xp.toString(),
                   style: TextStyle(fontSize: 20)),
-              trailing: new Text('XP', style: TextStyle(fontSize: 12)),
+              trailing: Text('XP', style: TextStyle(fontSize: 12)),
             )
           ],
         ),
@@ -107,9 +109,10 @@ class ChallengePage extends StatelessWidget {
   }
 
   Widget _buildLabelsBox(BuildContext context) {
-    return SizedBox(
-      width: 280,
-      child: new Card(
+    return Container(
+      constraints: BoxConstraints(maxWidth: 400),
+      width: MediaQuery.of(context).size.width * 0.8,
+      child: Card(
         color: Theme.of(context).cardColor.withOpacity(0.5),
         child: Column(children: _buildLabelsList(context)),
       ),
@@ -117,24 +120,26 @@ class ChallengePage extends StatelessWidget {
   }
 
   List<Widget> _buildLabelsList(BuildContext context) {
-    List<Widget> labelsBox = new List();
+    List<Widget> labelsBox = List();
     labelsBox.add(Padding(
       padding: const EdgeInsets.all(8.0),
-      child: new Text('Required',
+      child: Text('Required',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
     ));
     challenge.labels.forEach((k, v) {
       labelsBox.add(
         ListTile(
-          contentPadding: EdgeInsets.symmetric(horizontal: 40),
-          title: new Text(
-            capitalize(k),
-            style: TextStyle(fontSize: 20, ),
+          contentPadding: EdgeInsets.only(left: 20, right: 20),
+          title: Text(
+            capitalize(k),textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 20,
+            ),
           ),
-          trailing: new Text(v.toString(), style: TextStyle(fontSize: 20)),
+          trailing: Text(v.toString(), style: TextStyle(fontSize: 20)),
         ),
       );
-      labelsBox.add(new Divider(
+      labelsBox.add(Divider(
         height: 5.0,
       ));
     });

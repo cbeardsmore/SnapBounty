@@ -69,11 +69,13 @@ class ChallengeList extends StatelessWidget {
               child: Chip(
                 backgroundColor: Colors.transparent,
                 padding: EdgeInsets.zero,
-                label: Text(challenge.name,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                        color: Colors.white)),
+                label: FittedBox(
+                  fit: BoxFit.contain,
+                  child: Text(challenge.name,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white)),
+                ),
               ),
             )),
             child: ClipRRect(
