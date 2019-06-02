@@ -36,19 +36,20 @@ class SignInButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.only(right: 15),
                 child: Image.asset(
                   image,
                   width: imageSize,
                 ),
               ),
               Expanded(
-                child: FittedBox(fit: BoxFit.contain,
+                child: FittedBox(fit: BoxFit.scaleDown,
                   child: Text(
                     text,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: textColor,
+                      fontSize: 20
                     ),
                   ),
                 ),
