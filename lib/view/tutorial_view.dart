@@ -11,23 +11,6 @@ class TutorialPage extends StatelessWidget {
           flexibleSpace: GradientAppBar('How to Play'),
         ),
         body: _buildCarousel(context) 
-        // PageView(
-        //   controller: PageController(viewportFraction: 1),
-        //   children: <Widget>[
-        //     Padding(
-        //       padding: const EdgeInsets.symmetric(horizontal: 10),
-        //       child: Image.asset('assets/tutorial1.jpg'),
-        //     ),
-        //     Padding(
-        //       padding: const EdgeInsets.symmetric(horizontal: 10),
-        //       child: Image.asset('assets/tutorial2.jpg'),
-        //     ),
-        //     Padding(
-        //       padding: const EdgeInsets.symmetric(horizontal: 10),
-        //       child: Image.asset('assets/tutorial3.jpg'),
-        //     ),
-        //   ],
-        // ));
     );
   }
 

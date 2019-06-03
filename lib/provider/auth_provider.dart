@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:snap_bounty/app_state.dart';
 import 'package:snap_bounty/provider/firestore_provider.dart';
 import 'package:snap_bounty/view/auth_view.dart';
 
@@ -46,18 +46,19 @@ class AuthProvider {
       final AuthCredential credential =
           FacebookAuthProvider.getCredential(accessToken: accessToken.token);
       identityProvider = Provider.FACEBOOK;
-      await firebaseSignIn(context, credential);
+      return await firebaseSignIn(context, credential);
     }
-    return null;
   }
 
   Future<void> firebaseSignIn(
       BuildContext context, AuthCredential credential) async {
-    await _auth.signInWithCredential(credential);
-    final FirebaseUser user = await _auth.currentUser();
-    _firestoreProvider.createPlayer(user.uid, user.email);
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => PrimaryApp()));
+    try {
+      await _auth.signInWithCredential(credential);
+      final FirebaseUser user = await _auth.currentUser();
+      _firestoreProvider.createPlayer(user.uid, user.email);
+    } on PlatformException catch (error, stackTrace) {
+      return Future.error(error, stackTrace);
+    }
   }
 
   void signOut(BuildContext context) {

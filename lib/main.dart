@@ -38,7 +38,7 @@ class MainApp extends StatelessWidget {
         builder: (BuildContext context, snapshot) {
           print(snapshot.connectionState);
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return new CircularProgressIndicator();
+            return CircularProgressIndicator();
           } else {
             if (snapshot.hasData) {
               return PrimaryApp();

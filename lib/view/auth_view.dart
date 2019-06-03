@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:snap_bounty/widgets/sign_in_button.dart';
 import 'package:snap_bounty/provider/auth_provider.dart';
+import 'package:snap_bounty/app_state.dart';
 
 class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final AuthProvider _authProvider = AuthProvider();
-    return Stack(children: <Widget>[
-      _buildBackground(),
-      _buildLogo(context),
-      _buildGoogleLoginButton(context, _authProvider),
-      _buildFacebookLoginButton(context, _authProvider),
-    ]);
+    return Scaffold(
+      body: Stack(children: <Widget>[
+        _buildBackground(),
+        _buildLogo(context),
+        _buildGoogleLoginButton(context),
+        _buildFacebookLoginButton(context),
+      ]),
+    );
   }
 
   Container _buildBackground() {
@@ -56,26 +58,49 @@ class AuthPage extends StatelessWidget {
     );
   }
 
-  SignInButton _buildGoogleLoginButton(
-      BuildContext context, AuthProvider _authProvider) {
+  Widget _buildGoogleLoginButton(BuildContext context) {
+    final AuthProvider _authProvider = AuthProvider();
+
     return SignInButton(
-      text: 'Sign in with Google',
-      image: 'assets/google_logo.png',
-      color: Colors.white,
-      yAlignment: 0.65,
-      onPressed: () => _authProvider.handleGoogleSignIn(context),
-    );
+        text: 'Sign in with Google',
+        image: 'assets/google_logo.png',
+        color: Colors.white,
+        yAlignment: 0.65,
+        onPressed: () =>
+            onPressedWrapper(context, _authProvider.handleGoogleSignIn));
   }
 
-  SignInButton _buildFacebookLoginButton(
-      BuildContext context, AuthProvider _authProvider) {
+  Widget _buildFacebookLoginButton(BuildContext context) {
+    final AuthProvider _authProvider = AuthProvider();
     return SignInButton(
-      text: 'Continue with Facebook',
-      textColor: Colors.white,
-      image: 'assets/facebook_logo.png',
-      color: Color(0xFF4267B2),
-      yAlignment: 0.83,
-      onPressed: () => _authProvider.handleFacebookSignIn(context),
-    );
+        text: 'Continue with Facebook',
+        textColor: Colors.white,
+        image: 'assets/facebook_logo.png',
+        color: Color(0xFF4267B2),
+        yAlignment: 0.83,
+        onPressed: () =>
+            onPressedWrapper(context, _authProvider.handleFacebookSignIn));
+  }
+
+  void onPressedWrapper(BuildContext context, Function signIn) {
+    signIn(context)
+        .then((value) => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => PrimaryApp())))
+        .catchError((error) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Error:'),
+              content: Text(error.message),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('Continue'),
+                  onPressed: () => Navigator.of(context).pop(),
+                )
+              ],
+            );
+          });
+    });
   }
 }
