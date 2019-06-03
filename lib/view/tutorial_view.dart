@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
 
@@ -9,22 +10,38 @@ class TutorialPage extends StatelessWidget {
         appBar: AppBar(
           flexibleSpace: GradientAppBar('How to Play'),
         ),
-        body: PageView(
-          controller: PageController(viewportFraction: 0.8),
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Image.asset('assets/tutorial1.png'),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Image.asset('assets/tutorial2.png'),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Image.asset('assets/tutorial3.png'),
-            ),
-          ],
-        ));
+        body: _buildCarousel(context) 
+        // PageView(
+        //   controller: PageController(viewportFraction: 1),
+        //   children: <Widget>[
+        //     Padding(
+        //       padding: const EdgeInsets.symmetric(horizontal: 10),
+        //       child: Image.asset('assets/tutorial1.jpg'),
+        //     ),
+        //     Padding(
+        //       padding: const EdgeInsets.symmetric(horizontal: 10),
+        //       child: Image.asset('assets/tutorial2.jpg'),
+        //     ),
+        //     Padding(
+        //       padding: const EdgeInsets.symmetric(horizontal: 10),
+        //       child: Image.asset('assets/tutorial3.jpg'),
+        //     ),
+        //   ],
+        // ));
+    );
+  }
+
+  Widget _buildCarousel(BuildContext context) {
+    return Container(
+      child: Carousel(
+        images: [
+          AssetImage('assets/tutorial1.jpg'),
+          AssetImage('assets/tutorial2.jpg'),
+          AssetImage('assets/tutorial3.jpg')
+        ],
+        dotColor: Theme.of(context).primaryColor,
+        dotBgColor: Theme.of(context).accentColor.withOpacity(0.7),
+      ),
+    );
   }
 }
