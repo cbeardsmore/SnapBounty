@@ -17,6 +17,7 @@ class TutorialPage extends StatelessWidget {
   Widget _buildCarousel(BuildContext context) {
     return Container(
       child: Carousel(
+        boxFit: BoxFit.fill,
         images: [
           AssetImage('assets/tutorial1.jpg'),
           AssetImage('assets/tutorial2.jpg'),
@@ -24,6 +25,7 @@ class TutorialPage extends StatelessWidget {
         ],
         dotColor: Theme.of(context).primaryColor,
         dotBgColor: Theme.of(context).accentColor.withOpacity(0.7),
+        animationDuration: Duration(days: 1),
       ),
     );
   }

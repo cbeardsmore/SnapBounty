@@ -3,15 +3,35 @@ import 'package:snap_bounty/widgets/sign_in_button.dart';
 import 'package:snap_bounty/provider/auth_provider.dart';
 import 'package:snap_bounty/app_state.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
+  @override
+  _AuthPageState createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  bool _loading = false;
+
   @override
   Widget build(BuildContext context) {
+    double progressIndicatorSize = MediaQuery.of(context).size.width * 0.1;
+
     return Scaffold(
       body: Stack(children: <Widget>[
         _buildBackground(),
         _buildLogo(context),
         _buildGoogleLoginButton(context),
         _buildFacebookLoginButton(context),
+        _loading
+            ? Align(
+                child: SizedBox(
+                    height: progressIndicatorSize,
+                    width: progressIndicatorSize,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 6,
+
+                      backgroundColor: Theme.of(context).primaryColor,
+                    )))
+            : SizedBox.shrink()
       ]),
     );
   }
@@ -83,6 +103,9 @@ class AuthPage extends StatelessWidget {
   }
 
   void onPressedWrapper(BuildContext context, Function signIn) {
+    setState(() {
+      _loading = true;
+    });
     signIn(context)
         .then((value) => Navigator.push(
             context, MaterialPageRoute(builder: (context) => PrimaryApp())))
@@ -91,16 +114,22 @@ class AuthPage extends StatelessWidget {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Error:'),
+              title: Text('Please Try Again'),
               content: Text(error.message),
               actions: <Widget>[
                 FlatButton(
-                  child: Text('Continue'),
+                  child: Text('CONTINUE',
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColorDark,
+                          fontSize: 18)),
                   onPressed: () => Navigator.of(context).pop(),
                 )
               ],
             );
           });
+    });
+    setState(() {
+      _loading = false;
     });
   }
 }

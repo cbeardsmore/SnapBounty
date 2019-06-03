@@ -26,6 +26,9 @@ class AuthProvider {
 
   Future<void> handleGoogleSignIn(BuildContext context) async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    if (googleUser == null)
+      return Future.error(
+          PlatformException(code: 'useless', message: 'Sign in cancelled.'));
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
 
@@ -53,8 +56,7 @@ class AuthProvider {
   Future<void> firebaseSignIn(
       BuildContext context, AuthCredential credential) async {
     try {
-      await _auth.signInWithCredential(credential);
-      final FirebaseUser user = await _auth.currentUser();
+      final FirebaseUser user = await _auth.signInWithCredential(credential);
       _firestoreProvider.createPlayer(user.uid, user.email);
     } on PlatformException catch (error, stackTrace) {
       return Future.error(error, stackTrace);
