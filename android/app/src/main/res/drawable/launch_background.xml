@@ -2,10 +2,10 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/accent" />
     <item
-        android:left="10dp"
-        android:right="10dp">
+        android:gravity="center"
+        android:width="130dp"
+        android:height="130dp">
         <bitmap
-            android:gravity="center"
             android:src="@mipmap/ic_launcher" />
     </item>
 </layer-list>
