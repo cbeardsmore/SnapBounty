@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 
 import 'package:snap_bounty/app_state.dart';
 import 'package:snap_bounty/provider/auth_provider.dart';
@@ -7,7 +8,29 @@ import 'package:snap_bounty/widgets/challenge_list.dart';
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
 import 'package:snap_bounty/view/tutorial_view.dart';
 
-class PrimaryPage extends StatelessWidget {
+class PrimaryPage extends StatefulWidget {
+  @override
+  _PrimaryPageState createState() => _PrimaryPageState();
+}
+
+class _PrimaryPageState extends State<PrimaryPage> {
+  final BannerAd _bannerAd = BannerAd(
+      size: AdSize.smartBanner, adUnitId: "ca-app-pub-2172200387993290/5886095464");
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance
+        .initialize(appId: "ca-app-pub-2172200387993290~8703830495");
+    _bannerAd..load()..show();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
