@@ -6,6 +6,7 @@ import 'package:snap_bounty/provider/auth_provider.dart';
 import 'package:snap_bounty/widgets/challenge_list.dart';
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
 import 'package:snap_bounty/view/tutorial_view.dart';
+import 'package:snap_bounty/view/donate_view.dart';
 
 class PrimaryPage extends StatelessWidget {
   @override
@@ -93,6 +94,14 @@ class PrimaryPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Divider(height: 10),
+                    ListTile(
+              leading: Icon(Icons.favorite, color: Colors.red),
+              title: Text(
+                'Support the Developer',
+                style: TextStyle(fontSize: 16),
+              ),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => DonationsPage()))),
           ListTile(
               leading: Icon(Icons.help),
               title: Text(
