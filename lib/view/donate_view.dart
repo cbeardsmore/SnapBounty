@@ -12,7 +12,10 @@ class DonationsPage extends StatefulWidget {
 class _DonationsPageState extends State<DonationsPage> {
   final Map<String, Widget> _productIconMap = {
     'tier1_donation': Icon(Icons.cake),
-    'tier2_donation': Icon(Icons.local_drink)
+    'tier2_donation': Icon(Icons.local_drink),
+    'tier3_donation': Icon(Icons.fastfood),
+    'tier4_donation': Icon(Icons.money_off),
+    'tier5_donation': Icon(Icons.verified_user)
   };
 
   final PurchaseProvider _purchaseProvider = PurchaseProvider();
