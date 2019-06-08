@@ -14,20 +14,23 @@ class PrimaryPage extends StatefulWidget {
 }
 
 class _PrimaryPageState extends State<PrimaryPage> {
-  final BannerAd _bannerAd = BannerAd(
-      size: AdSize.smartBanner, adUnitId: "ca-app-pub-2172200387993290/5886095464");
+  //final BannerAd _bannerAd = BannerAd(
+      //size: AdSize.smartBanner, adUnitId: "ca-app-pub-2172200387993290/5886095464");
+
+  final InterstitialAd _interstitialAd = InterstitialAd(adUnitId: "ca-app-pub-2172200387993290/6727122582");
 
   @override
   void initState() {
     super.initState();
     FirebaseAdMob.instance
         .initialize(appId: "ca-app-pub-2172200387993290~8703830495");
-    _bannerAd..load()..show();
+    _interstitialAd..load()..show();
   }
 
   @override
   void dispose() {
-    _bannerAd?.dispose();
+    //_bannerAd?.dispose();
+    _interstitialAd?.dispose();
     super.dispose();
   }
 
