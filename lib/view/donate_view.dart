@@ -1,8 +1,44 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_inapp_purchase/flutter_inapp_purchase.dart';
+import 'package:snap_bounty/provider/purchase_provider.dart';
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
 
-class DonationsPage extends StatelessWidget {
+class DonationsPage extends StatefulWidget {
+  @override
+  _DonationsPageState createState() => _DonationsPageState();
+}
+
+class _DonationsPageState extends State<DonationsPage> {
+  final Map<String, Widget> _productIconMap = {
+    'tier1_donation': Icon(Icons.cake),
+    'tier2_donation': Icon(Icons.local_drink)
+  };
+
+  final PurchaseProvider _purchaseProvider = PurchaseProvider();
+  List<IAPItem> _items;
+
+  @override
+  void initState() {
+    super.initState();
+    initPurchases();
+  }
+
+  void initPurchases() async {
+    await FlutterInappPurchase.initConnection;
+    List<IAPItem> _fetchedItems =
+        await _purchaseProvider.getItems(_productIconMap.keys.toList());
+    setState(() {
+      _items = _fetchedItems;
+    });
+  }
+
+  @override
+  void dispose() async {
+    super.dispose();
+    await FlutterInappPurchase.endConnection;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,42 +49,23 @@ class DonationsPage extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context) {
-    return Container(
-        child: Column(
-      children: <Widget>[
-        ListTile(
-          leading: Icon(Icons.cake),
-          title: Text('Chocolate Bar'),
-          subtitle:
-              Text('Everyone loves a treat, help feed my sugar addiction.'),
-          trailing: Text("\$0.99"),
-        ),
-        Divider(height: 10),
-        ListTile(
-          leading: Icon(Icons.local_drink),
-          title: Text('Red Bull'),
-          subtitle:
-              Text('Keep me up at night fixing the endless list of bugs.'),
-          trailing: Text("\$2.99"),
-        ),
-        Divider(height: 10),
-        ListTile(
-          leading: Icon(Icons.fastfood),
-          title: Text('Lunch'),
-          subtitle:
-              Text('Buy me a decent healthy meal.'),
-          trailing: Text("\$5.99"),
-        ),
-        Divider(height: 10),
-        ListTile(
-          leading: Icon(Icons.money_off),
-          title: Text('Ad Free'),
-          subtitle:
-              Text('Help keep those damn ads off this platform.'),
-          trailing: Text("\$9.99"),
-        ),
-        Divider(height: 10),
-      ],
-    ));
+    if (_items == null) return Center(child: CircularProgressIndicator());
+    return ListView.separated(
+        separatorBuilder: (context, index) {
+          return Divider(
+            height: 20,
+          );
+        },
+        itemCount: _items.length,
+        itemBuilder: (context, index) {
+          final IAPItem _item = _items[index];
+          print(_item.toString());
+          return ListTile(
+            leading: _productIconMap[_item.productId],
+            title: Text(_item.title.split('(')[0]),
+            subtitle: Text(_item.description),
+            trailing: Text(_item.localizedPrice),
+          );
+        });
   }
 }
