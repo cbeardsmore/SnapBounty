@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_inapp_purchase/flutter_inapp_purchase.dart';
 
 class PurchaseProvider {
@@ -5,7 +6,11 @@ class PurchaseProvider {
     return await FlutterInappPurchase.getProducts(productIds);
   }
 
-  Future<PurchasedItem> purchase(IAPItem item) async {
-    return await FlutterInappPurchase.buyProduct(item.productId);
+  Future<PurchasedItem> purchase(String productId) async {
+    try {
+      return await FlutterInappPurchase.buyProduct(productId);
+    } on PlatformException catch (error, stackTrace) {
+      return Future.error(error, stackTrace);
+    }
   }
 }

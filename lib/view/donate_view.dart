@@ -45,29 +45,36 @@ class _DonationsPageState extends State<DonationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          flexibleSpace: GradientAppBar('Donations'),
-        ),
-        body: _buildBody(context));
+        appBar: AppBar(flexibleSpace: GradientAppBar('Donations')),
+        body: Builder(builder: (BuildContext context) {
+          return Padding(
+              padding: const EdgeInsets.all(8.0), child: _buildBody(context));
+        }));
   }
 
   Widget _buildBody(BuildContext context) {
     if (_items == null) return Center(child: CircularProgressIndicator());
     return ListView.separated(
         separatorBuilder: (context, index) {
-          return Divider(
-            height: 20,
-          );
+          return Divider(height: 20);
         },
         itemCount: _items.length,
         itemBuilder: (context, index) {
           final IAPItem _item = _items[index];
-          print(_item.toString());
           return ListTile(
-            leading: _productIconMap[_item.productId],
+            leading: Padding(
+                padding: const EdgeInsets.only(left: 4.0),
+                child: _productIconMap[_item.productId]),
             title: Text(_item.title.split('(')[0]),
             subtitle: Text(_item.description),
             trailing: Text(_item.localizedPrice),
+            onTap: () {
+              _purchaseProvider.purchase(_item.productId).catchError((error) {
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  content: Text('An error occurred. Please try again!'),
+                ));
+              });
+            },
           );
         });
   }
