@@ -67,7 +67,18 @@ class _DonationsPageState extends State<DonationsPage> {
                 child: _productIconMap[_item.productId]),
             title: Text(_item.title.split('(')[0]),
             subtitle: Text(_item.description),
-            trailing: Text(_item.localizedPrice),
+            trailing: RaisedButton(
+                child: Text(_item.localizedPrice),
+                color: Colors.greenAccent,
+                onPressed: () {
+                  _purchaseProvider
+                      .purchase(_item.productId)
+                      .catchError((error) {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text('An error occurred. Please try again!'),
+                    ));
+                  });
+                }),
             onTap: () {
               _purchaseProvider.purchase(_item.productId).catchError((error) {
                 Scaffold.of(context).showSnackBar(SnackBar(
