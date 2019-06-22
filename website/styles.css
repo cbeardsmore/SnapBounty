@@ -1,0 +1,15 @@
+html {
+	background-color: #18FFFF;
+}
+
+.feature-graphic {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+.feature-graphic-image {
+	width: 100%;
+	border-radius: 20px
+}
