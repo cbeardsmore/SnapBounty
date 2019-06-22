@@ -102,14 +102,14 @@ class PrimaryPage extends StatelessWidget {
               ),
               onTap: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => DonationsPage()))),
-          ListTile(
-              leading: Icon(Icons.help),
-              title: Text(
-                'How to Play',
-                style: TextStyle(fontSize: 16),
-              ),
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => TutorialPage()))),
+          // ListTile(
+          //     leading: Icon(Icons.help),
+          //     title: Text(
+          //       'How to Play',
+          //       style: TextStyle(fontSize: 16),
+          //     ),
+          //     onTap: () => Navigator.push(context,
+          //         MaterialPageRoute(builder: (context) => TutorialPage()))),
           ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text(

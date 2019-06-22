@@ -44,7 +44,13 @@ class AuthProvider {
   Future<void> handleFacebookSignIn(BuildContext context) async {
     final FacebookLoginResult result =
         await _facebookLogin.logInWithReadPermissions(['email']);
-    if (result.status == FacebookLoginStatus.loggedIn) {
+    if (result.status == FacebookLoginStatus.cancelledByUser)
+      return Future.error(
+          PlatformException(code: 'useless', message: 'Sign in cancelled.'));
+    else if (result.status == FacebookLoginStatus.error)
+      return Future.error(
+          PlatformException(code: 'useless', message: result.errorMessage));
+    else if (result.status == FacebookLoginStatus.loggedIn) {
       final FacebookAccessToken accessToken = result.accessToken;
       final AuthCredential credential =
           FacebookAuthProvider.getCredential(accessToken: accessToken.token);
