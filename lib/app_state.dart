@@ -22,6 +22,7 @@ class PrimaryAppState extends State<PrimaryApp> {
   final FirestoreProvider _firestoreProvider = FirestoreProvider();
 
   String filter;
+  String status;
   FirebaseUser user;
   Player player;
 
@@ -31,8 +32,10 @@ class PrimaryAppState extends State<PrimaryApp> {
     });
   }
 
-  String getFilter() {
-    return filter;
+  void setStatus(String status) {
+    setState(() {
+      this.status = status;
+    });
   }
 
   void setUserAndPlayer() async {
@@ -50,6 +53,7 @@ class PrimaryAppState extends State<PrimaryApp> {
     super.initState();
     setUserAndPlayer();
     filter = null;
+    status = null;
   }
 
   @override

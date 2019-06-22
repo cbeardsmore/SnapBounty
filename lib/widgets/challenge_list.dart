@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:snap_bounty/app_state.dart';
@@ -17,20 +18,39 @@ class ChallengeList extends StatelessWidget {
     final FirestoreProvider _firestoreProvider = FirestoreProvider();
     final PrimaryInheritedWidget _primaryInheritedWidget =
         PrimaryInheritedWidget.of(context);
+    Player player = _primaryInheritedWidget?.data?.player;
+    List<String> completedChallenges = player?.completed;
     String filter = _primaryInheritedWidget?.data?.filter;
+    String status = _primaryInheritedWidget?.data?.status;
+
+    Stream<QuerySnapshot> challenges;
+    if (filter == null) {
+      challenges = _firestoreProvider.getChallenges();
+    } else {
+      challenges = _firestoreProvider.getFilteredChallenges(filter);
+    }
 
     return StreamBuilder(
-        stream: _firestoreProvider.getChallenges(filter: filter),
+        stream: challenges,
         builder: (context, snapshot) {
           if (!snapshot.hasData)
             return const Center(child: const CircularProgressIndicator());
+          List<DocumentSnapshot> documents = snapshot.data.documents;
+          if (status == 'Complete')
+            documents = documents
+                .where((x) => completedChallenges.contains(x.documentID))
+                .toList();
+          else if (status == 'Incomplete')
+            documents = documents
+                .where((x) => !completedChallenges.contains(x.documentID))
+                .toList();
+
           return GridView.builder(
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-              itemCount: snapshot.data.documents.length,
+              itemCount: documents.length,
               itemBuilder: (context, index) {
-                Challenge challenge =
-                    Challenge.fromDocument(snapshot.data.documents[index]);
+                Challenge challenge = Challenge.fromDocument(documents[index]);
                 return _buildListItem(context, challenge);
               });
         });

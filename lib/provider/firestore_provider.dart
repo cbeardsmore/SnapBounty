@@ -7,14 +7,15 @@ class FirestoreProvider {
 
   final Firestore _firestore = Firestore.instance;
 
-  Stream<QuerySnapshot> getChallenges({filter}) {
-    CollectionReference collection =
-        _firestore.collection(COLLECTION_CHALLENGES);
-    if (filter != null) {
-      return collection.where('category', isEqualTo: filter).snapshots();
-    }
+  Stream<QuerySnapshot> getChallenges() {
+    return _firestore.collection(COLLECTION_CHALLENGES).snapshots();
+  }
 
-    return collection.snapshots();
+  Stream<QuerySnapshot> getFilteredChallenges(filter) {
+    return _firestore
+        .collection(COLLECTION_CHALLENGES)
+        .where('category', isEqualTo: filter)
+        .snapshots();
   }
 
   void completeChallenge(
