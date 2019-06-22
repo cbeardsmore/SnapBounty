@@ -28,7 +28,7 @@ class FirestoreProvider {
   void createPlayer(String id, String email) async {
     DocumentSnapshot existing =
         await _firestore.collection(COLLECTION_PLAYERS).document(id).get();
-    if (!existing.exists) {
+    if (existing.exists) {
       _firestore.collection(COLLECTION_PLAYERS).document(id).setData(
         {
           'lastLogin': Timestamp.now(),
