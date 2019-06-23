@@ -38,11 +38,11 @@ class ChallengeList extends StatelessWidget {
           List<DocumentSnapshot> documents = snapshot.data.documents;
           if (status == 'Complete')
             documents = documents
-                .where((x) => completedChallenges.contains(x.documentID))
+                .where((x) => completedChallenges != null && completedChallenges.contains(x.documentID))
                 .toList();
           else if (status == 'Incomplete')
             documents = documents
-                .where((x) => !completedChallenges.contains(x.documentID))
+                .where((x) => completedChallenges == null || !completedChallenges.contains(x.documentID))
                 .toList();
 
           return GridView.builder(
