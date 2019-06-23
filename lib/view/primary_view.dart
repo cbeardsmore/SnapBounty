@@ -7,6 +7,7 @@ import 'package:snap_bounty/widgets/challenge_list.dart';
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
 import 'package:snap_bounty/view/tutorial_view.dart';
 import 'package:snap_bounty/view/donate_view.dart';
+import 'package:snap_bounty/view/profile_view.dart';
 
 class PrimaryPage extends StatelessWidget {
   @override
@@ -45,6 +46,7 @@ class PrimaryPage extends StatelessWidget {
       child: Container(
         child: Column(
           children: <Widget>[
+            Divider(height: 10),
             Text('Category', style: TextStyle(fontSize: 20)),
             Divider(height: 10),
             Wrap(
@@ -62,7 +64,7 @@ class PrimaryPage extends StatelessWidget {
               ],
             ),
             Divider(height: 10),
-            Text('Completed', style: TextStyle(fontSize: 20)),
+            Text('Progress', style: TextStyle(fontSize: 20)),
             Divider(height: 10),
             Wrap(
               spacing: 5,
@@ -115,6 +117,14 @@ class PrimaryPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Divider(height: 10),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text(
+                'Profile',
+                style: TextStyle(fontSize: 16),
+              ),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()))),
           ListTile(
               leading: Icon(Icons.favorite, color: Colors.red),
               title: Text(
