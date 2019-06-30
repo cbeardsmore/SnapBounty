@@ -1,5 +1,5 @@
 name: snap_bounty
-version: 0.1.1
+version: 1.3.0
 description: Photography Game utilizing Firebase and ML Kit
 author: Connor Beardsmore <connor.beardsmore@gmail.com>
 homepage: https://cbeardsmore.github.io
