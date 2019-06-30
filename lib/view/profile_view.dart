@@ -104,7 +104,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   backgroundColor: Theme.of(context).primaryColor,
                   foregroundColor: Theme.of(context).iconTheme.color,
                 ),
-                title: FittedBox(child: Text(user.displayName, style: TextStyle(fontSize: 20), maxLines: 1,)),
+                title: FittedBox(
+                    child: Text(
+                  user.displayName,
+                  style: TextStyle(fontSize: 20),
+                  maxLines: 1,
+                )),
                 trailing: Text('Name', style: TextStyle(fontSize: 10))),
             ListTile(
                 leading: CircleAvatar(
@@ -112,7 +117,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   backgroundColor: Theme.of(context).primaryColor,
                   foregroundColor: Theme.of(context).iconTheme.color,
                 ),
-                title: FittedBox(child: Text(user.email, style: TextStyle(fontSize: 20), maxLines: 1,)),
+                title: FittedBox(
+                    child: Text(
+                  user.email,
+                  style: TextStyle(fontSize: 20),
+                  maxLines: 1,
+                )),
                 trailing: Text('Email', style: TextStyle(fontSize: 10))),
             ListTile(
                 leading: CircleAvatar(
