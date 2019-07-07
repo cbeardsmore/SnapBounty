@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:snap_bounty/app_state.dart';
+import 'package:snap_bounty/utils.dart';
 import 'package:snap_bounty/controller/challenge_result_controller.dart';
 import 'package:snap_bounty/model/challenge_result.dart';
 import 'package:snap_bounty/model/challenge.dart';
@@ -21,8 +22,6 @@ class _SnapPageState extends State<SnapPage> {
   final ChallengeResultController _challengeResultController =
       ChallengeResultController();
   ChallengeResult _challengeResult;
-
-  String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
 
   @override
   void initState() {
@@ -48,12 +47,6 @@ class _SnapPageState extends State<SnapPage> {
           children: <Widget>[
             _buildBackground(context),
             _buildLabelsBox(context),
-            // _challengeResult != null
-            //     ? Text(
-            //         _challengeResult.labels.toString(),
-            //         style: TextStyle(color: Colors.white),
-            //       )
-            //     : Text('')
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -119,10 +112,10 @@ class _SnapPageState extends State<SnapPage> {
       labelsBox.add(ListTile(
         leading: actualLeading,
         title: Text(
-          capitalize(k),
+          Utils.capitalize(k),
           style: TextStyle(fontSize: 20),
         ),
-        trailing: Text(actualConfidence.toStringAsFixed(1) + '/' + v.toString(),
+        trailing: Text(Utils.toPercent(actualConfidence) + ' / ' + Utils.toPercent(v),
             style: TextStyle(fontSize: 18)),
       ));
     });

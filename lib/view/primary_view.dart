@@ -7,6 +7,7 @@ import 'package:snap_bounty/widgets/challenge_list.dart';
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
 import 'package:snap_bounty/view/tutorial_view.dart';
 import 'package:snap_bounty/view/donate_view.dart';
+import 'package:snap_bounty/view/profile_view.dart';
 
 class PrimaryPage extends StatelessWidget {
   @override
@@ -45,13 +46,9 @@ class PrimaryPage extends StatelessWidget {
       child: Container(
         child: Column(
           children: <Widget>[
-            Text(
-              'Category Filter',
-              style: TextStyle(fontSize: 20),
-            ),
-            Divider(
-              height: 10,
-            ),
+            Divider(height: 10),
+            Text('Category', style: TextStyle(fontSize: 20)),
+            Divider(height: 10),
             Wrap(
               spacing: 5,
               runSpacing: -5,
@@ -64,6 +61,17 @@ class PrimaryPage extends StatelessWidget {
                 _buildFilterChip(context, 'Places'),
                 _buildFilterChip(context, 'Things'),
                 _buildFilterChip(context, 'Transport')
+              ],
+            ),
+            Divider(height: 10),
+            Text('Progress', style: TextStyle(fontSize: 20)),
+            Divider(height: 10),
+            Wrap(
+              spacing: 5,
+              runSpacing: -5,
+              children: <Widget>[
+                _buildCompletionChip(context, 'Incomplete'),
+                _buildCompletionChip(context, 'Complete'),
               ],
             ),
           ],
@@ -80,10 +88,25 @@ class PrimaryPage extends StatelessWidget {
         label: Text(label),
         backgroundColor: Theme.of(context).cardColor,
         selectedColor: Colors.grey[600],
-        selected: _primaryInheritedWidget.data.getFilter() == label,
+        selected: _primaryInheritedWidget.data.filter == label,
         onSelected: (isSelected) {
           String newFilter = isSelected ? label : null;
           _primaryInheritedWidget.data.setFilter(newFilter);
+        });
+  }
+
+  Widget _buildCompletionChip(BuildContext context, String label) {
+    final PrimaryInheritedWidget _primaryInheritedWidget =
+        PrimaryInheritedWidget.of(context);
+
+    return FilterChip(
+        label: Text(label),
+        backgroundColor: Theme.of(context).cardColor,
+        selectedColor: Colors.grey[600],
+        selected: _primaryInheritedWidget.data.status == label,
+        onSelected: (isSelected) {
+          String newStatus = isSelected ? label : null;
+          _primaryInheritedWidget.data.setStatus(newStatus);
         });
   }
 
@@ -94,7 +117,15 @@ class PrimaryPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Divider(height: 10),
-                    ListTile(
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text(
+                'Profile',
+                style: TextStyle(fontSize: 16),
+              ),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()))),
+          ListTile(
               leading: Icon(Icons.favorite, color: Colors.red),
               title: Text(
                 'Support the Developer',

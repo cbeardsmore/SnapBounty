@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:snap_bounty/model/challenge.dart';
 import 'package:snap_bounty/provider/camera_provider.dart';
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
+import 'package:snap_bounty/utils.dart';
 
 class ChallengePage extends StatelessWidget {
   final Challenge challenge;
 
   ChallengePage(this.challenge);
-
-  String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
 
   @override
   Widget build(BuildContext context) {
@@ -130,12 +129,12 @@ class ChallengePage extends StatelessWidget {
         ListTile(
           contentPadding: EdgeInsets.only(left: 20, right: 20),
           title: Text(
-            capitalize(k),textAlign: TextAlign.left,
+            Utils.capitalize(k),textAlign: TextAlign.left,
             style: TextStyle(
               fontSize: 20,
             ),
           ),
-          trailing: Text(v.toString(), style: TextStyle(fontSize: 20)),
+          trailing: Text(Utils.toPercent(v), style: TextStyle(fontSize: 20)),
         ),
       );
       labelsBox.add(Divider(
