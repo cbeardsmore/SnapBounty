@@ -1,288 +1,410 @@
 {
 	"challenges": {
-		"3tIrWkRxTFlLDMMA78rU": {
-			"labels": {
-				"Stadium": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fstadium.jpg?alt=media&token=506b7b23-99b9-46f3-840a-619f39db3fc7",
-			"name": "Game On",
-			"xp": 30,
-			"category": "Places"
+	  "30A6rhkq2ZByfp7fvLUv": {
+		"labels": {
+		  "Guitar": 0.9,
+		  "Musical Instrument": 0.8
 		},
-		"3vUZImv3WD7IYD7U2eTt": {
-			"xp": 10,
-			"category": "Transport",
-			"labels": {
-				"Bicycle": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fbike.jpg?alt=media&token=6d699009-ac1f-4586-98f3-b80c37f101ab",
-			"name": "Pedal it Out"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fguitar.jpg?alt=media&token=618cd8d4-80a3-40b2-95bb-487931db07ad",
+		"name": "The Experience",
+		"xp": 20,
+		"category": "Things"
+	  },
+	  "3tIrWkRxTFlLDMMA78rU": {
+		"labels": {
+		  "Stadium": 0.9
 		},
-		"5xzJjqPSydxTg6oFhGR9": {
-			"name": "Road Rash",
-			"xp": 20,
-			"category": "Transport",
-			"labels": {
-				"Vehicle": 0.8,
-				"Motorcycle": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fmotorbike.jpg?alt=media&token=abdf18fb-c4c0-4976-9d43-ca389f504db2"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fstadium.jpg?alt=media&token=506b7b23-99b9-46f3-840a-619f39db3fc7",
+		"name": "Game On",
+		"xp": 30,
+		"category": "Places"
+	  },
+	  "3vUZImv3WD7IYD7U2eTt": {
+		"xp": 10,
+		"category": "Transport",
+		"labels": {
+		  "Bicycle": 0.8
 		},
-		"7qJ8UufnoxHua8xyViqm": {
-			"name": "Lifes a Beach",
-			"xp": 10,
-			"category": "Places",
-			"labels": {
-				"Beach": 0.7,
-				"Water": 0.6
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fbeach.jpg?alt=media&token=dd217908-8cd4-495e-8cde-0545221f8962"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fbike.jpg?alt=media&token=6d699009-ac1f-4586-98f3-b80c37f101ab",
+		"name": "Pedal it Out"
+	  },
+	  "5xzJjqPSydxTg6oFhGR9": {
+		"labels": {
+		  "Vehicle": 0.8,
+		  "Motorcycle": 0.9
 		},
-		"8Jl7bTltrR8GGjicFn4U": {
-			"name": "King of the Hill",
-			"xp": 20,
-			"category": "Places",
-			"labels": {
-				"Mountain": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fmountain.jpg?alt=media&token=b198dba8-24f6-4fd3-92b2-4200eaf1666e"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fmotorbike.jpg?alt=media&token=abdf18fb-c4c0-4976-9d43-ca389f504db2",
+		"name": "Road Rash",
+		"xp": 20,
+		"category": "Transport"
+	  },
+	  "6YWsVSh74gYr9xcbAZch": {
+		"labels": {
+		  "Player": 0.8,
+		  "Football": 0.8
 		},
-		"AIVZq4gLtekkPdSik5Xf": {
-			"labels": {
-				"Skyline": 0.9,
-				"City": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fskyline.jpg?alt=media&token=06981af5-c7b0-4251-9550-e2dcface7557",
-			"name": "Concrete Jungle",
-			"xp": 10,
-			"category": "Places"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fsoccer.jpg?alt=media&token=3a52e927-e16b-43f9-9757-64b4e75cafb6",
+		"name": "The Beautiful Game",
+		"xp": 20,
+		"category": "Activities"
+	  },
+	  "7ingFO27VfD5wdnvEVe8": {
+		"labels": {
+		  "Medal": 0.9
 		},
-		"AKimHDv6RwT4V0GkjBUS": {
-			"labels": {
-				"Boat": 0.9,
-				"Transport": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fboat.jpg?alt=media&token=16ae714b-3679-42dc-856c-6642155e1ccd",
-			"name": "Rock the Boat",
-			"xp": 10,
-			"category": "Transport"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fmedal.jpg?alt=media&token=a2f631b9-9033-48f5-94fd-1f42dfa5880e",
+		"name": "Winner Take All",
+		"xp": 20,
+		"category": "Things"
+	  },
+	  "7qJ8UufnoxHua8xyViqm": {
+		"xp": 10,
+		"category": "Places",
+		"labels": {
+		  "Beach": 0.7,
+		  "Water": 0.6
 		},
-		"BKS9OnzQyHs4WFBZH0ix": {
-			"name": "Hold Your Horses",
-			"xp": 15,
-			"category": "Animals",
-			"labels": {
-				"Horse": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fhorse.jpg?alt=media&token=8d54e178-a9c1-4dd9-95cb-9fa7a6a466af"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fbeach.jpg?alt=media&token=dd217908-8cd4-495e-8cde-0545221f8962",
+		"name": "Lifes a Beach"
+	  },
+	  "8Jl7bTltrR8GGjicFn4U": {
+		"xp": 20,
+		"category": "Places",
+		"labels": {
+		  "Mountain": 0.8
 		},
-		"BpM0CIm8YfPPGbCMXYXW": {
-			"xp": 20,
-			"category": "Things",
-			"labels": {
-				"Umbrella": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Frain.jpg?alt=media&token=61d827e6-9cbb-45e9-9a04-eaf1d199d9a8",
-			"name": "Rain Man"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fmountain.jpg?alt=media&token=b198dba8-24f6-4fd3-92b2-4200eaf1666e",
+		"name": "King of the Hill"
+	  },
+	  "AIVZq4gLtekkPdSik5Xf": {
+		"xp": 10,
+		"category": "Places",
+		"labels": {
+		  "City": 0.9,
+		  "Skyline": 0.9
 		},
-		"EotU2znkeAtauOGS3oxe": {
-			"xp": 25,
-			"category": "Activities",
-			"labels": {
-				"Snow": 0.9,
-				"Snowboarding": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fsnowboard.jpg?alt=media&token=85fc84ae-d025-458f-a0ce-1f3263501f75",
-			"name": "Powder Run"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fskyline.jpg?alt=media&token=06981af5-c7b0-4251-9550-e2dcface7557",
+		"name": "Concrete Jungle"
+	  },
+	  "AKimHDv6RwT4V0GkjBUS": {
+		"labels": {
+		  "Boat": 0.9,
+		  "Transport": 0.8
 		},
-		"FLTTW9aUtMMmAXu92sgs": {
-			"xp": 30,
-			"category": "Activities",
-			"labels": {
-				"Rock Climbing": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fclimbing.jpg?alt=media&token=08b85985-4be8-4e41-8ff8-bdc9f477aecd",
-			"name": "The Honnold"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fboat.jpg?alt=media&token=16ae714b-3679-42dc-856c-6642155e1ccd",
+		"name": "Rock the Boat",
+		"xp": 10,
+		"category": "Transport"
+	  },
+	  "BKS9OnzQyHs4WFBZH0ix": {
+		"labels": {
+		  "Horse": 0.8
 		},
-		"IT77hSCTxFzgBVyYUDWJ": {
-			"labels": {
-				"River": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Friver.jpg?alt=media&token=48032e2c-1949-45ff-a539-46d9dd017806",
-			"name": "Troubled Waters",
-			"xp": 15,
-			"category": "Places"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fhorse.jpg?alt=media&token=8d54e178-a9c1-4dd9-95cb-9fa7a6a466af",
+		"name": "Hold Your Horses",
+		"xp": 15,
+		"category": "Animals"
+	  },
+	  "BpM0CIm8YfPPGbCMXYXW": {
+		"labels": {
+		  "Umbrella": 0.9
 		},
-		"NP2q7EjCayA3CKGG6l5o": {
-			"xp": 20,
-			"category": "Animals",
-			"labels": {
-				"Dolphin": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fdolphin.jpg?alt=media&token=af6fb5a2-190e-44ee-944a-fa976a1bbb64",
-			"name": "Flipper"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Frain.jpg?alt=media&token=61d827e6-9cbb-45e9-9a04-eaf1d199d9a8",
+		"name": "Rain Man",
+		"xp": 20,
+		"category": "Things"
+	  },
+	  "Cs5H6hD4FUxahvF8c6dp": {
+		"xp": 25,
+		"category": "People",
+		"labels": {
+		  "Grandparent": 0.8
 		},
-		"QXrY8uB41oK73MR3oMsd": {
-			"xp": 30,
-			"category": "Activities",
-			"labels": {
-				"Surfing": 0.8,
-				"Water": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fsurf.jpg?alt=media&token=888f7c61-a547-4f30-8c60-b8bf4d11ba76",
-			"name": "Surfs Up"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fgrandparent.jpg?alt=media&token=78112573-508b-4eef-89ce-ac5cd447efe5",
+		"name": "Family Tree"
+	  },
+	  "EotU2znkeAtauOGS3oxe": {
+		"labels": {
+		  "Snowboarding": 0.9,
+		  "Snow": 0.9
 		},
-		"TWPKBK9nXtDln8qGoxtR": {
-			"name": "Sky High",
-			"xp": 30,
-			"category": "Transport",
-			"labels": {
-				"Airplane": 0.9,
-				"Sky": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fairplane.jpg?alt=media&token=90c0f62e-3246-4e8b-9d2f-b51b6df240b7"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fsnowboard.jpg?alt=media&token=85fc84ae-d025-458f-a0ce-1f3263501f75",
+		"name": "Powder Run",
+		"xp": 25,
+		"category": "Activities"
+	  },
+	  "F2tAdyjnuZ0KEWNiDimJ": {
+		"labels": {
+		  "Eyewear": 0.8,
+		  "Glasses": 0.8
 		},
-		"UZoKOFdQ1p5OM4fHu3d3": {
-			"labels": {
-				"Elephant": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Felephant.jpg?alt=media&token=2b0749f8-52c9-47fa-a7d9-4040b725cca7",
-			"name": "Dumbo",
-			"xp": 15,
-			"category": "Animals"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fglasses.jpg?alt=media&token=a396b999-02d6-4eb2-aab0-a16b898f6aba",
+		"name": "Rose-Tinted Glasses",
+		"xp": 20,
+		"category": "People"
+	  },
+	  "FLTTW9aUtMMmAXu92sgs": {
+		"labels": {
+		  "Rock Climbing": 0.8
 		},
-		"VpCeWNCJ9OVcUYSt0RDJ": {
-			"xp": 20,
-			"category": "Transport",
-			"labels": {
-				"Train": 0.9,
-				"Vehicle": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Ftrain.jpg?alt=media&token=c51c6f45-9dd3-4d5c-ab4f-2eb024a94ec3",
-			"name": "Train Wreck"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fclimbing.jpg?alt=media&token=08b85985-4be8-4e41-8ff8-bdc9f477aecd",
+		"name": "The Honnold",
+		"xp": 30,
+		"category": "Activities"
+	  },
+	  "IT77hSCTxFzgBVyYUDWJ": {
+		"xp": 15,
+		"category": "Places",
+		"labels": {
+		  "River": 0.9
 		},
-		"X83KULXdBwkWdg9v4dIM": {
-			"xp": 10,
-			"category": "Animals",
-			"labels": {
-				"Fish": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Ffish.jpg?alt=media&token=3b55c3ac-f1ce-4f2f-b44f-03060a51e14c",
-			"name": "Big Fish"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Friver.jpg?alt=media&token=48032e2c-1949-45ff-a539-46d9dd017806",
+		"name": "Troubled Waters"
+	  },
+	  "NP2q7EjCayA3CKGG6l5o": {
+		"labels": {
+		  "Dolphin": 0.8
 		},
-		"XbTZQbv4mMBJfHzu1D0S": {
-			"xp": 20,
-			"category": "Transport",
-			"labels": {
-				"Helicopter": 0.9,
-				"Aircraft": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fchopper.jpg?alt=media&token=32170868-4dca-4083-aed4-91f8106e59f4",
-			"name": "Whirlybird"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fdolphin.jpg?alt=media&token=af6fb5a2-190e-44ee-944a-fa976a1bbb64",
+		"name": "Flipper",
+		"xp": 20,
+		"category": "Animals"
+	  },
+	  "QXrY8uB41oK73MR3oMsd": {
+		"name": "Surfs Up",
+		"xp": 30,
+		"category": "Activities",
+		"labels": {
+		  "Water": 0.8,
+		  "Surfing": 0.8
 		},
-		"eURrkk8RhWeStj9tE42o": {
-			"labels": {
-				"Forest": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fforest.jpg?alt=media&token=ffea0ed6-64a4-427d-a633-1cefe1ff1431",
-			"name": "Touch Wood",
-			"xp": 10,
-			"category": "Places"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fsurf.jpg?alt=media&token=888f7c61-a547-4f30-8c60-b8bf4d11ba76"
+	  },
+	  "TWPKBK9nXtDln8qGoxtR": {
+		"xp": 30,
+		"category": "Transport",
+		"labels": {
+		  "Airplane": 0.9,
+		  "Sky": 0.8
 		},
-		"l71MWwraqDw6yFZX1Gkh": {
-			"xp": 10,
-			"category": "Animals",
-			"labels": {
-				"Cat": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fcat.jpg?alt=media&token=39c050b2-dec7-4ebd-bb2f-a2f12aa91ef0",
-			"name": "Nine Lives"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fairplane.jpg?alt=media&token=90c0f62e-3246-4e8b-9d2f-b51b6df240b7",
+		"name": "Sky High"
+	  },
+	  "UZoKOFdQ1p5OM4fHu3d3": {
+		"xp": 15,
+		"category": "Animals",
+		"labels": {
+		  "Elephant": 0.8
 		},
-		"m6f112udyqVsxr4MzOJV": {
-			"xp": 10,
-			"category": "Animals",
-			"labels": {
-				"Monkey": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fmonkey.jpg?alt=media&token=f705b7dd-81be-4ea3-a316-aee3534bd631",
-			"name": "Monkey Business"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Felephant.jpg?alt=media&token=2b0749f8-52c9-47fa-a7d9-4040b725cca7",
+		"name": "Dumbo"
+	  },
+	  "VpCeWNCJ9OVcUYSt0RDJ": {
+		"xp": 20,
+		"category": "Transport",
+		"labels": {
+		  "Vehicle": 0.8,
+		  "Train": 0.9
 		},
-		"mbsTRIpm87cwcu3EJZq9": {
-			"xp": 40,
-			"category": "Activities",
-			"labels": {
-				"Person": 0.8,
-				"Running": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Frunning.jpg?alt=media&token=8cf3325c-849f-4432-b8cf-6438814ca241",
-			"name": "Forest Gump"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Ftrain.jpg?alt=media&token=c51c6f45-9dd3-4d5c-ab4f-2eb024a94ec3",
+		"name": "Train Wreck"
+	  },
+	  "X83KULXdBwkWdg9v4dIM": {
+		"xp": 10,
+		"category": "Animals",
+		"labels": {
+		  "Fish": 0.9
 		},
-		"rukzU9mAjQhx8xDyUG6M": {
-			"xp": 5,
-			"category": "People",
-			"labels": {
-				"Selfie": 0.9,
-				"Smile": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fselfie.jpg?alt=media&token=888cbc06-0427-4712-9642-dff04d3fc24b",
-			"name": "The Classic Selfie"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Ffish.jpg?alt=media&token=3b55c3ac-f1ce-4f2f-b44f-03060a51e14c",
+		"name": "Big Fish"
+	  },
+	  "XbTZQbv4mMBJfHzu1D0S": {
+		"xp": 20,
+		"category": "Transport",
+		"labels": {
+		  "Helicopter": 0.9,
+		  "Aircraft": 0.9
 		},
-		"sECZrpELmOJi91Hv5mcR": {
-			"xp": 20,
-			"category": "Home",
-			"labels": {
-				"Room": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Froom.jpg?alt=media&token=bab34b62-e9e7-4c3f-8f51-f9f35f9973e3",
-			"name": "RoomTest"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fchopper.jpg?alt=media&token=32170868-4dca-4083-aed4-91f8106e59f4",
+		"name": "Whirlybird"
+	  },
+	  "eURrkk8RhWeStj9tE42o": {
+		"xp": 10,
+		"category": "Places",
+		"labels": {
+		  "Forest": 0.9
 		},
-		"skPuNDRFIDxe5neEf05I": {
-			"xp": 20,
-			"category": "Animals",
-			"labels": {
-				"Dog": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fdoggo.jpg?alt=media&token=3693f55b-5048-40b0-be90-a9c81593411e",
-			"name": "Mans Best Friend"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fforest.jpg?alt=media&token=ffea0ed6-64a4-427d-a633-1cefe1ff1431",
+		"name": "Touch Wood"
+	  },
+	  "gIyrsS9yGJeBFbK4kU2L": {
+		"labels": {
+		  "Laptop": 0.9,
+		  "Technology": 0.8
 		},
-		"ur06Khw9AIz6gx40Tf9r": {
-			"xp": 15,
-			"category": "Food & Drink",
-			"labels": {
-				"Food": 0.9,
-				"Cuisine": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Ffood.jpg?alt=media&token=906f3ae4-f02e-4005-8c83-844c5238a2e8",
-			"name": "Food Coma"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Flaptop.jpg?alt=media&token=d82b1b3d-a9cb-4c97-ae6c-4dfc4757b700",
+		"name": "Black Turtleneck",
+		"xp": 10,
+		"category": "Things"
+	  },
+	  "j1hV2zoUjjqeM1ox26nZ": {
+		"name": "Inked",
+		"xp": 25,
+		"category": "People",
+		"labels": {
+		  "Tattoo": 0.9
 		},
-		"yDsFBVlQSuygbY9s3Kpx": {
-			"xp": 10,
-			"category": "Transport",
-			"labels": {
-				"Bus": 0.9,
-				"Vehicle": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fbus.jpg?alt=media&token=97cf2a10-a4d5-4059-9244-7e4704403836",
-			"name": "Wheels on the Bus"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Ftattoo.jpg?alt=media&token=aaa75f55-f1ec-4769-b9d5-bb4a6afe54cf"
+	  },
+	  "l71MWwraqDw6yFZX1Gkh": {
+		"name": "Nine Lives",
+		"xp": 10,
+		"category": "Animals",
+		"labels": {
+		  "Cat": 0.8
 		},
-		"yqeddVpHFt2MZFG6uSBr": {
-			"name": "Face The Music",
-			"xp": 40,
-			"category": "Activities",
-			"labels": {
-				"Concert": 0.9,
-				"Event": 0.9
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fconcert.jpg?alt=media&token=464733b9-8bcc-482b-9749-ba5a68b2b05f"
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fcat.jpg?alt=media&token=39c050b2-dec7-4ebd-bb2f-a2f12aa91ef0"
+	  },
+	  "m6f112udyqVsxr4MzOJV": {
+		"xp": 10,
+		"category": "Animals",
+		"labels": {
+		  "Monkey": 0.8
 		},
-		"zaAxx1nq5scNnYuPnF7V": {
-			"labels": {
-				"Bird": 0.8
-			},
-			"image": "https://firebasestorage.googleapis.com/v0/b/snap-hero-1.appspot.com/o/images-challenge%2Fbird.jpg?alt=media&token=b49d6bb2-4a73-4647-b490-938bf1c7527d",
-			"name": "Early Bird",
-			"xp": 20,
-			"category": "Animals"
-		}
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fmonkey.jpg?alt=media&token=f705b7dd-81be-4ea3-a316-aee3534bd631",
+		"name": "Monkey Business"
+	  },
+	  "mbsTRIpm87cwcu3EJZq9": {
+		"xp": 40,
+		"category": "Activities",
+		"labels": {
+		  "Running": 0.9,
+		  "Person": 0.8
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Frunning.jpg?alt=media&token=8cf3325c-849f-4432-b8cf-6438814ca241",
+		"name": "Forest Gump"
+	  },
+	  "rukzU9mAjQhx8xDyUG6M": {
+		"xp": 5,
+		"category": "People",
+		"labels": {
+		  "Selfie": 0.7,
+		  "Smile": 0.8
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fselfie.jpg?alt=media&token=888cbc06-0427-4712-9642-dff04d3fc24b",
+		"name": "The Classic Selfie"
+	  },
+	  "sDCCvlFNuOyOBfAaAhMA": {
+		"name": "Sink or Swim",
+		"xp": 20,
+		"category": "Activities",
+		"labels": {
+		  "Swimming": 0.8
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fswimming.jpg?alt=media&token=dc0e01b3-be92-423d-8497-1e915dcce94e"
+	  },
+	  "sECZrpELmOJi91Hv5mcR": {
+		"xp": 20,
+		"category": "Home",
+		"labels": {
+		  "Room": 0.8
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Froom.jpg?alt=media&token=bab34b62-e9e7-4c3f-8f51-f9f35f9973e3",
+		"name": "Breathing Room"
+	  },
+	  "skPuNDRFIDxe5neEf05I": {
+		"name": "Mans Best Friend",
+		"xp": 20,
+		"category": "Animals",
+		"labels": {
+		  "Dog": 0.8
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fdoggo.jpg?alt=media&token=3693f55b-5048-40b0-be90-a9c81593411e"
+	  },
+	  "tZQJngCN3bRSMMzxDDIz": {
+		"labels": {
+		  "Entertainment": 0.8,
+		  "Dance": 0.9
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fdancing.jpg?alt=media&token=ad88f94d-6f7e-4eff-8475-584d4426f1dd",
+		"name": "Footloose",
+		"xp": 30,
+		"category": "Activities"
+	  },
+	  "u3LTrbvblsP5SiZEnnqC": {
+		"xp": 20,
+		"category": "Things",
+		"labels": {
+		  "Newspaper": 0.9
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fnewspaper.jpg?alt=media&token=7562df7b-4507-41c1-b6fb-1257d61dd440",
+		"name": "Fake News"
+	  },
+	  "ur06Khw9AIz6gx40Tf9r": {
+		"labels": {
+		  "Cuisine": 0.8,
+		  "Food": 0.9
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Ffood.jpg?alt=media&token=906f3ae4-f02e-4005-8c83-844c5238a2e8",
+		"name": "Food Coma",
+		"xp": 15,
+		"category": "Food & Drink"
+	  },
+	  "vkZkAKntCbbzmRIVeKrm": {
+		"name": "Mighty Mouse",
+		"xp": 30,
+		"category": "Activities",
+		"labels": {
+		  "Combat Sport": 0.8
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fboxing.jpg?alt=media&token=19a55137-bd45-4f1d-ba30-afdeb3513ebf"
+	  },
+	  "xLWw6X692s9qvScUNYDL": {
+		"name": "Bookworm",
+		"xp": 10,
+		"category": "Activities",
+		"labels": {
+		  "Reading": 0.8
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Freading.jpg?alt=media&token=0a168367-37b3-49cd-972b-fac098ee8d95"
+	  },
+	  "xxwm18VvF34lclvyaKCo": {
+		"name": "Green Thumb",
+		"xp": 10,
+		"category": "Things",
+		"labels": {
+		  "Plant": 0.8
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fplant.jpg?alt=media&token=f8fcf119-88e6-452f-8e59-e62e62419644"
+	  },
+	  "yDsFBVlQSuygbY9s3Kpx": {
+		"labels": {
+		  "Bus": 0.9,
+		  "Vehicle": 0.9
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fbus.jpg?alt=media&token=97cf2a10-a4d5-4059-9244-7e4704403836",
+		"name": "Wheels on the Bus",
+		"xp": 10,
+		"category": "Transport"
+	  },
+	  "yqeddVpHFt2MZFG6uSBr": {
+		"xp": 40,
+		"category": "Activities",
+		"labels": {
+		  "Event": 0.9,
+		  "Concert": 0.9
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fconcert.jpg?alt=media&token=464733b9-8bcc-482b-9749-ba5a68b2b05f",
+		"name": "Face The Music"
+	  },
+	  "zaAxx1nq5scNnYuPnF7V": {
+		"labels": {
+		  "Bird": 0.8
+		},
+		"image": "https:\/\/firebasestorage.googleapis.com\/v0\/b\/snap-hero-1.appspot.com\/o\/images-challenge%2Fbird.jpg?alt=media&token=b49d6bb2-4a73-4647-b490-938bf1c7527d",
+		"name": "Early Bird",
+		"xp": 20,
+		"category": "Animals"
+	  }
 	}
-}
+  }
