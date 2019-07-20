@@ -24,6 +24,12 @@ Flutter Application utilizing Google Firebase and MLkit.
 	flutter build apk
 	```
 
+- Build the Android App Bundle
+
+	```bash
+	flutter build appbundle
+	```
+
 - Run the app:
 
 	```
