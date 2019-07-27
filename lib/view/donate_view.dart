@@ -1,8 +1,16 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-import 'package:flutter_inapp_purchase/flutter_inapp_purchase.dart';
-import 'package:snap_bounty/provider/purchase_provider.dart';
+import 'package:flutter/material.dart';
 import 'package:snap_bounty/widgets/gradient_app_bar.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
+
+const Map<String, Widget> PRODUCT_ICON_MAP = {
+  'tier1_donation': Icon(Icons.cake),
+  'tier2_donation': Icon(Icons.local_drink),
+  'tier3_donation': Icon(Icons.fastfood),
+  'tier4_donation': Icon(Icons.money_off),
+  'tier5_donation': Icon(Icons.verified_user)
+};
 
 class DonationsPage extends StatefulWidget {
   @override
@@ -10,36 +18,50 @@ class DonationsPage extends StatefulWidget {
 }
 
 class _DonationsPageState extends State<DonationsPage> {
-  final Map<String, Widget> _productIconMap = {
-    'tier1_donation': Icon(Icons.cake),
-    'tier2_donation': Icon(Icons.local_drink),
-    'tier3_donation': Icon(Icons.fastfood),
-    'tier4_donation': Icon(Icons.money_off),
-    'tier5_donation': Icon(Icons.verified_user)
-  };
-
-  final PurchaseProvider _purchaseProvider = PurchaseProvider();
-  List<IAPItem> _items;
+  final InAppPurchaseConnection _inAppPurchase =
+      InAppPurchaseConnection.instance;
+  List<ProductDetails> _products = [];
+  StreamSubscription<List<PurchaseDetails>> _subscription;
+  bool _available = true;
 
   @override
   void initState() {
+    Stream _purchaseUpdated = _inAppPurchase.purchaseUpdatedStream;
+    _subscription = _purchaseUpdated.listen((purchaseDetailsList) {
+      print(purchaseDetailsList.toString());
+    });
+    initStore();
     super.initState();
-    initPurchases();
   }
 
-  void initPurchases() async {
-    await FlutterInappPurchase.initConnection;
-    List<IAPItem> _fetchedItems =
-        await _purchaseProvider.getItems(_productIconMap.keys.toList());
+  void initStore() async {
+    final bool isAvailable = await _inAppPurchase.isAvailable();
     setState(() {
-      _items = _fetchedItems;
+      _available = isAvailable;
     });
+    if (isAvailable) {
+      await _getProducts();
+    }
   }
 
   @override
   void dispose() async {
+    _subscription.cancel();
     super.dispose();
-    await FlutterInappPurchase.endConnection;
+  }
+
+  Future<void> _getProducts() async {
+    final ProductDetailsResponse response =
+        await _inAppPurchase.queryProductDetails(PRODUCT_ICON_MAP.keys.toSet());
+    setState(() {
+      _products = response.productDetails;
+    });
+  }
+
+  void _buyProduct(ProductDetails product) {
+    final PurchaseParam purchaseParam = PurchaseParam(productDetails: product);
+    _inAppPurchase.buyConsumable(
+        purchaseParam: purchaseParam, autoConsume: true);
   }
 
   @override
@@ -53,38 +75,29 @@ class _DonationsPageState extends State<DonationsPage> {
   }
 
   Widget _buildBody(BuildContext context) {
-    if (_items == null) return Center(child: CircularProgressIndicator());
+    if (_products.length == 0)
+      return Center(child: CircularProgressIndicator());
     return ListView.separated(
         separatorBuilder: (context, index) {
           return Divider(height: 20);
         },
-        itemCount: _items.length,
+        itemCount: _products.length,
         itemBuilder: (context, index) {
-          final IAPItem _item = _items[index];
+          final ProductDetails _product = _products[index];
           return ListTile(
             leading: Padding(
                 padding: const EdgeInsets.only(left: 4.0),
-                child: _productIconMap[_item.productId]),
-            title: Text(_item.title.split('(')[0]),
-            subtitle: Text(_item.description),
+                child: PRODUCT_ICON_MAP[_product.id]),
+            title: Text(_product.title.split('(')[0]),
+            subtitle: Text(_product.description),
             trailing: RaisedButton(
-                child: Text(_item.localizedPrice),
+                child: Text(_product.price),
                 color: Colors.greenAccent,
                 onPressed: () {
-                  _purchaseProvider
-                      .purchase(_item.productId)
-                      .catchError((error) {
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text('An error occurred. Please try again!'),
-                    ));
-                  });
+                  _buyProduct(_product);
                 }),
             onTap: () {
-              _purchaseProvider.purchase(_item.productId).catchError((error) {
-                Scaffold.of(context).showSnackBar(SnackBar(
-                  content: Text('An error occurred. Please try again!'),
-                ));
-              });
+              _buyProduct(_product);
             },
           );
         });
