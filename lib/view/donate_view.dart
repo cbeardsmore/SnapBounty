@@ -22,32 +22,32 @@ class _DonationsPageState extends State<DonationsPage> {
       InAppPurchaseConnection.instance;
   List<ProductDetails> _products = [];
   StreamSubscription<List<PurchaseDetails>> _subscription;
-  bool _available = true;
 
   @override
   void initState() {
-    Stream _purchaseUpdated = _inAppPurchase.purchaseUpdatedStream;
-    _subscription = _purchaseUpdated.listen((purchaseDetailsList) {
-      print(purchaseDetailsList.toString());
-    });
+    final Stream<List<PurchaseDetails>> _purchaseUpdates = _inAppPurchase.purchaseUpdatedStream;
+    _subscription = _purchaseUpdates.listen((purchaseDetails) {
+      _handlePurchaseUpdate(purchaseDetails);
+    }, onError: (error) => print(error.toString()) );
     initStore();
     super.initState();
   }
 
-  void initStore() async {
-    final bool isAvailable = await _inAppPurchase.isAvailable();
-    setState(() {
-      _available = isAvailable;
-    });
-    if (isAvailable) {
-      await _getProducts();
-    }
+  void _handlePurchaseUpdate(List<PurchaseDetails> purchaseDetails) {
+    print(purchaseDetails[0].status);
   }
 
   @override
-  void dispose() async {
+  void dispose() {
     _subscription.cancel();
     super.dispose();
+  }
+
+  void initStore() async {
+    final bool isAvailable = await _inAppPurchase.isAvailable();
+    if (isAvailable) {
+      await _getProducts();
+    }
   }
 
   Future<void> _getProducts() async {
@@ -58,9 +58,9 @@ class _DonationsPageState extends State<DonationsPage> {
     });
   }
 
-  void _buyProduct(ProductDetails product) {
+  void _buyProduct(ProductDetails product) async {
     final PurchaseParam purchaseParam = PurchaseParam(productDetails: product);
-    _inAppPurchase.buyConsumable(
+    await _inAppPurchase.buyConsumable(
         purchaseParam: purchaseParam, autoConsume: true);
   }
 
@@ -96,9 +96,6 @@ class _DonationsPageState extends State<DonationsPage> {
                 onPressed: () {
                   _buyProduct(_product);
                 }),
-            onTap: () {
-              _buyProduct(_product);
-            },
           );
         });
   }
