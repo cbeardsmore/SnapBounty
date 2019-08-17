@@ -13,9 +13,7 @@ class PrimaryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          flexibleSpace: GradientAppBar('Challenges'),
-        ),
+        appBar: AppBar(flexibleSpace: GradientAppBar('Challenges')),
         drawer: Drawer(
             child: Column(
           children: <Widget>[
@@ -32,50 +30,49 @@ class PrimaryPage extends StatelessWidget {
         PrimaryInheritedWidget.of(context);
     final FirebaseUser user = _primaryInheritedWidget.data.user;
 
+    String photoUrl = '';
+    if (user != null) photoUrl += user.photoUrl + '?height=500';
+
     return UserAccountsDrawerHeader(
       accountEmail: Text(user != null ? user?.email : ''),
       accountName: Text(user != null ? user.displayName : ''),
       currentAccountPicture: CircleAvatar(
-        backgroundImage: NetworkImage(user != null ? user.photoUrl : ''),
+        backgroundImage: NetworkImage(photoUrl),
       ),
     );
   }
 
   Widget _buildFilters(BuildContext context) {
     return Expanded(
-      child: Container(
-        child: Column(
-          children: <Widget>[
-            Divider(height: 10),
-            Text('Category', style: TextStyle(fontSize: 20)),
-            Divider(height: 10),
-            Wrap(
-              spacing: 5,
-              runSpacing: -5,
-              children: <Widget>[
-                _buildFilterChip(context, 'Activities'),
-                _buildFilterChip(context, 'Animals'),
-                _buildFilterChip(context, 'Food & Drink'),
-                _buildFilterChip(context, 'Home'),
-                _buildFilterChip(context, 'People'),
-                _buildFilterChip(context, 'Places'),
-                _buildFilterChip(context, 'Things'),
-                _buildFilterChip(context, 'Transport')
-              ],
-            ),
-            Divider(height: 10),
-            Text('Progress', style: TextStyle(fontSize: 20)),
-            Divider(height: 10),
-            Wrap(
-              spacing: 5,
-              runSpacing: -5,
-              children: <Widget>[
-                _buildCompletionChip(context, 'Incomplete'),
-                _buildCompletionChip(context, 'Complete'),
-              ],
-            ),
-          ],
-        ),
+      child: Column(
+        children: <Widget>[
+          Text('Category', style: TextStyle(fontSize: 20)),
+          Divider(height: 10),
+          Wrap(
+            spacing: 5,
+            runSpacing: -5,
+            children: <Widget>[
+              _buildFilterChip(context, 'Activities'),
+              _buildFilterChip(context, 'Animals'),
+              _buildFilterChip(context, 'Food & Drink'),
+              _buildFilterChip(context, 'Home'),
+              _buildFilterChip(context, 'People'),
+              _buildFilterChip(context, 'Places'),
+              _buildFilterChip(context, 'Things'),
+              _buildFilterChip(context, 'Transport')
+            ],
+          ),
+          Text('Progress', style: TextStyle(fontSize: 20)),
+          Divider(height: 10),
+          Wrap(
+            spacing: 5,
+            runSpacing: -5,
+            children: <Widget>[
+              _buildCompletionChip(context, 'Incomplete'),
+              _buildCompletionChip(context, 'Complete'),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -117,36 +114,25 @@ class PrimaryPage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Divider(height: 10),
-            ListTile(
+          ListTile(
               leading: Icon(Icons.person),
-              title: Text(
-                'Profile',
-                style: TextStyle(fontSize: 16),
-              ),
+              title: Text('Profile', style: TextStyle(fontSize: 16)),
               onTap: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => ProfilePage()))),
           ListTile(
               leading: Icon(Icons.favorite, color: Colors.red),
-              title: Text(
-                'Support the Developer',
-                style: TextStyle(fontSize: 16),
-              ),
+              title:
+                  Text('Support the Developer', style: TextStyle(fontSize: 16)),
               onTap: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => DonationsPage()))),
           ListTile(
               leading: Icon(Icons.help),
-              title: Text(
-                'How to Play',
-                style: TextStyle(fontSize: 16),
-              ),
+              title: Text('How to Play', style: TextStyle(fontSize: 16)),
               onTap: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => TutorialPage()))),
           ListTile(
               leading: Icon(Icons.exit_to_app),
-              title: Text(
-                'Sign Out',
-                style: TextStyle(fontSize: 16),
-              ),
+              title: Text('Sign Out', style: TextStyle(fontSize: 16)),
               onTap: () => _authProvider.signOut(context)),
         ],
       ),

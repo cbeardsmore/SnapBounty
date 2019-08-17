@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
-import 'package:snap_bounty/app_state.dart';
 import 'package:snap_bounty/utils.dart';
 import 'package:snap_bounty/controller/challenge_result_controller.dart';
 import 'package:snap_bounty/model/challenge_result.dart';
@@ -115,7 +114,8 @@ class _SnapPageState extends State<SnapPage> {
           Utils.capitalize(k),
           style: TextStyle(fontSize: 20),
         ),
-        trailing: Text(Utils.toPercent(actualConfidence) + ' / ' + Utils.toPercent(v),
+        trailing: Text(
+            Utils.toPercent(actualConfidence) + ' / ' + Utils.toPercent(v),
             style: TextStyle(fontSize: 18)),
       ));
     });
@@ -146,8 +146,7 @@ class _SnapPageState extends State<SnapPage> {
         child: FloatingActionButton(
           backgroundColor: success ? Colors.lightGreenAccent[400] : Colors.red,
           foregroundColor: Theme.of(context).accentColor,
-          onPressed: () => Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => PrimaryApp())),
+          onPressed: () => Navigator.pop(context),
           tooltip: success ? 'Challenge Completed!' : 'Try Again?',
           child: Icon(success ? Icons.check : Icons.clear, size: 50),
         ));
