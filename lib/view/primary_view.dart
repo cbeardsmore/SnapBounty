@@ -30,11 +30,14 @@ class PrimaryPage extends StatelessWidget {
         PrimaryInheritedWidget.of(context);
     final FirebaseUser user = _primaryInheritedWidget.data.user;
 
+    String photoUrl = '';
+    if (user != null) photoUrl += user.photoUrl + '?height=500';
+
     return UserAccountsDrawerHeader(
       accountEmail: Text(user != null ? user?.email : ''),
       accountName: Text(user != null ? user.displayName : ''),
       currentAccountPicture: CircleAvatar(
-        backgroundImage: NetworkImage(user != null ? user.photoUrl : ''),
+        backgroundImage: NetworkImage(photoUrl),
       ),
     );
   }

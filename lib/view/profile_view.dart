@@ -59,6 +59,10 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildPhoto(BuildContext context) {
+    String photoUrl = '';
+    if (user != null) {
+      photoUrl = user.photoUrl + '?height=500';
+    }
     return Positioned(
         top: 100,
         left: MediaQuery.of(context).size.width / 2 - 100,
@@ -68,7 +72,7 @@ class _ProfilePageState extends State<ProfilePage> {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-                image: NetworkImage(user?.photoUrl ?? ''), fit: BoxFit.cover),
+                image: NetworkImage(photoUrl), fit: BoxFit.cover),
           ),
         ));
   }
