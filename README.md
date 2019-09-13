@@ -1,7 +1,5 @@
 # SnapBounty
 
-[![Codemagic build status](https://api.codemagic.io/apps/5cce565044381500175b547e/5cce565044381500175b547d/status_badge.svg)](https://codemagic.io/apps/5cce565044381500175b547e/5cce565044381500175b547d/latest_build)
-
 Flutter Application utilizing Google Firebase as the backend datastore and MLkits image labelling API.
 
 <img src="screenshots/auth_view.png" width="20%" height="20%"> <img src="screenshots/challenge_list_view.png" width="20%" height="20%"> <img src="screenshots/challenge_view.png" width="20%" height="20%">
